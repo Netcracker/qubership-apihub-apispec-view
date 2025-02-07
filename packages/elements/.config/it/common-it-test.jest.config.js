@@ -5,21 +5,21 @@
  * @see qubership-apihub-jest-chrome-in-docker-environment readme
  */
 module.exports = {
-    rootDir: '../..',
-    testMatch: ['**/*.it-test.ts'],
-    roots: [
-        '<rootDir>/src/it',
+  rootDir: '../..',
+  testMatch: ['**/*.it-test.ts'],
+  roots: [
+    '<rootDir>/src/it',
+  ],
+  setupFilesAfterEnv: ['<rootDir>/.jest/setup.tests.ts'],
+  transform: {
+    '\\.ts?$': [
+      'ts-jest',
+      {
+        tsconfig: '<rootDir>/tsconfig.json',
+      },
     ],
-    setupFilesAfterEnv: ['<rootDir>/.jest/setup.tests.ts'],
-    transform: {
-        '\\.ts?$': [
-            'ts-jest',
-            {
-                tsconfig: '<rootDir>/tsconfig.json',
-            },
-        ],
-    },
-    reporters: [
-        'default',
-    ],
+  },
+  reporters: [
+    'default',
+  ],
 }

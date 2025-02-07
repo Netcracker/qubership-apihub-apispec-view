@@ -5,6 +5,6 @@ export async function captureScreenshot(domElement: ElementHandle): Promise<Buff
 }
 
 export function host(): string {
-  return process.env.RUN_IN_DOCKER === 'true' ? 'http://host.docker.internal:9009' : 'http://localhost:9009'
+  return process.env.RUN_IN_DOCKER === 'true' ? 'http://host.containers.internal:9009' : 'http://localhost:9009'
 }
 

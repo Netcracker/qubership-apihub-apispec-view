@@ -8,12 +8,12 @@ const { TEST_TIMEOUT, HEADLESS_MODE, DEVTOOLS, SCREEN_WIDTH, SCREEN_HEIGHT } = r
  * @see https://pptr.dev/api/puppeteer.browserconnectoptions
  */
 module.exports = {
-    headless: HEADLESS_MODE,
-    // slowMo: 500,
-    devtools: DEVTOOLS,
-    args: [
-        `--window-size=${SCREEN_WIDTH},${SCREEN_HEIGHT}`,
-        '--max-active-webgl-contexts=100',
-    ],
-    protocolTimeout: Math.round(1.1 * TEST_TIMEOUT), /* connection is longer than test timeout */
+  headless: HEADLESS_MODE,
+  // slowMo: 500,
+  devtools: DEVTOOLS,
+  args: [
+    `--window-size=${SCREEN_WIDTH},${SCREEN_HEIGHT}`,
+    '--max-active-webgl-contexts=100',
+  ],
+  protocolTimeout: Math.round(1.1 * TEST_TIMEOUT), /* connection is longer than test timeout */
 }

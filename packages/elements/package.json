@@ -1,6 +1,6 @@
 {
   "name": "@netcracker/qubership-apihub-apispec-view",
-  "version": "1.0.22-dev.1",
+  "version": "1.0.22-feature-adapt-screenshot-tests.1",
   "description": "Web Component to represent various API-specifications as a human-readable document",
   "license": "Apache-2.0",
   "sideEffects": [
@@ -28,7 +28,7 @@
     "build.webcomponents": "webpack -c ./web-components.config.js",
     "build:showcase": "storybook build -o ../../dist-showcase --disable-telemetry",
     "development:storybook": "storybook dev -p 9009",
-    "development:local-server:static": "npm run build:showcase && ws -p 9009 -d ../../dist-showcase --spa index.html --static.maxage 3600",
+    "development:local-server:static": "npm run build:showcase && ws --hostname 0.0.0.0 -p 9009 -d ../../dist-showcase --spa index.html --static.maxage 3600",
     "test:integration:ci": "start-server-and-test development:local-server:static http://localhost:9009 test:integration:run-test:ci",
     "test:integration:docker": "start-server-and-test development:local-server:static http://localhost:9009 test:integration:run-test:docker",
     "test:integration:run-test:ci": "jest --maxWorkers 4 -c .config/it/it-test.jest.config.js",
