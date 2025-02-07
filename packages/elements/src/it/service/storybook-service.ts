@@ -24,7 +24,6 @@ export async function storyPage(page: Page, storyName: string): Promise<StoryPag
   })
   await page.setViewport({ width: 1800, height: 1000 })
   const path = `${host()}/iframe.html?args=&id=${storyName}&viewMode=story`
-  await new Promise(() => {})
   await page.goto(path, { waitUntil: 'networkidle2' })
   //temp solution for screenshot long pages
   // await page.goto(`${host()}?path=/story/${storyName}`, { waitUntil: 'networkidle2' })
