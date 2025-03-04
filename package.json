@@ -18,7 +18,7 @@
     "@netcracker/qubership-apihub-api-diff": "1.0.4",
     "@netcracker/qubership-apihub-api-doc-viewer": "2.0.3",
     "@netcracker/qubership-apihub-http-spec": "5.5.7",
-    "@netcracker/qubership-apihub-jest-chrome-in-docker-environment": "feature-screenshot-tests-restoration",
+    "@netcracker/qubership-apihub-jest-chrome-in-docker-environment": "dev",
     "@schemastore/package": "0.0.4",
     "@stoplight/eslint-config": "2.1.0",
     "@stoplight/json": "^3.18.1",
