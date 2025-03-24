@@ -33,8 +33,8 @@ export const combineDiffType = (a: DiffType, b: DiffType): DiffType => {
   if (a === 'breaking' || b === 'breaking') {
     return 'breaking';
   }
-  if (a === 'semi-breaking' || b === 'semi-breaking') {
-    return 'semi-breaking';
+  if (a === 'risky' || b === 'risky') {
+    return 'risky';
   }
   if (a === 'deprecated' || b === 'deprecated') {
     return 'deprecated';
@@ -160,7 +160,7 @@ export const extractAmountOfDiffs = (value: any, diffMetaKey: symbol): { [key in
     deprecated: 0,
     unclassified: 0,
     annotation: 0,
-    'semi-breaking': 0,
+    'risky': 0,
   };
 
   const addMetaToInitial = (meta: Diff | DiffMetaRecord) => {
