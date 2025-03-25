@@ -4,7 +4,8 @@ import {
   ClassifierType,
   deprecated,
   DiffType,
-  nonBreaking, risky,
+  nonBreaking,
+  risky,
   unclassified,
 } from '@netcracker/qubership-apihub-api-diff'
 import { keys } from 'lodash';
