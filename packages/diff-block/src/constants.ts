@@ -38,7 +38,7 @@ export const DIFF_BUDGES_COLOR_MAP = {
 
 export const DIFF_TYPE_NAME_MAP: Record<DiffType, string> = {
   [breaking]: 'breaking',
-  [risky]: 'risky',
+  [risky]: 'requires attention',
   [deprecated]: 'deprecated',
   [nonBreaking]: 'non-breaking',
   [unclassified]: 'unclassified',
