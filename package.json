@@ -15,7 +15,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@netcracker/qubership-apihub-api-unifier": "1.0.4",
     "@netcracker/qubership-apihub-compatibility-suites": "2.0.3",
-    "@netcracker/qubership-apihub-api-diff": "1.0.5-feature-rename-label-semi-breaking-changes-two.20250314115102",
+    "@netcracker/qubership-apihub-api-diff": "feature-rename-label-semi-breaking-changes-two",
     "@netcracker/qubership-apihub-api-doc-viewer": "feature-rename-label-semi-breaking-changes-two",
     "@netcracker/qubership-apihub-http-spec": "5.5.7",
     "@netcracker/qubership-apihub-jest-chrome-in-docker-environment": "2.0.0",
