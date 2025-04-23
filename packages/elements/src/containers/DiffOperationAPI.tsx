@@ -176,8 +176,6 @@ export const DiffOperationAPIImpl: React.FC<DiffAPIProps> = props => {
     )
   }
 
-  console.log('operationNode', operationNode)
-
   let apiWithOperationElement = (
     <APIWithOperation
       operation={operationNode}

@@ -11,7 +11,7 @@ import { useMemo } from 'react'
 import { isNodeExample } from '../../../utils/http-spec/examples'
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
 import { useDiffMetaKey } from '@stoplight/elements/containers/DIffMetaKeyContext'
-import { DiffMetaRecord } from '@netcracker/qubership-apihub-api-diff'
+import { DiffAction, DiffMetaRecord } from '@netcracker/qubership-apihub-api-diff'
 
 type ParameterKey = string
 type ParameterMediaType = string
@@ -141,6 +141,25 @@ const httpOperationParamsToSchema = (
       ...paramDeprecated !== undefined ? { deprecated: paramDeprecated } : {},
       ...paramStyle !== undefined ? { style: paramStyle } : {},
       [diffMetaKey]: p[diffMetaKey] ?? paramSchema?.[diffMetaKey],
+    }
+
+    if (p[diffMetaKey] && 'name' in p[diffMetaKey]) {
+      const originalNameDiff = p[diffMetaKey].name
+      const nameDiff = {
+        [p.name]: {
+          type: originalNameDiff.type,
+          action: DiffAction.rename,
+          description: originalNameDiff.description,
+          beforeKey: originalNameDiff.beforeValue,
+          beforeDeclarationPaths: originalNameDiff.beforeDeclarationPaths,
+          afterKey: originalNameDiff.afterValue,
+          afterDeclarationPaths: originalNameDiff.afterDeclarationPaths,
+        }
+      }
+      schema.properties![diffMetaKey] = {
+        ...schema.properties![diffMetaKey],
+        ...nameDiff,
+      }
     }
 
     if (p[diffMetaKey] && 'deprecated' in p[diffMetaKey]) {
