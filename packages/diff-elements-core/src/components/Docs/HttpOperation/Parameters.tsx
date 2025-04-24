@@ -134,13 +134,21 @@ const httpOperationParamsToSchema = (
 
     mergeMirrorSymbolsForDiffMeta(p, diffMetaKey)
 
+
+    const paramPropsDiffMeta = {
+      ...p[diffMetaKey] ?? {},
+      ...paramSchema?.[diffMetaKey] ?? {},
+    }
     schema.properties![p.name] = {
       ...paramSchema,
       ...paramDescription ? { description: paramDescription } : {},
       examples: [...paramExamples, ...schemaExamplesArray],
       ...paramDeprecated !== undefined ? { deprecated: paramDeprecated } : {},
       ...paramStyle !== undefined ? { style: paramStyle } : {},
-      [diffMetaKey]: p[diffMetaKey] ?? paramSchema?.[diffMetaKey],
+      [diffMetaKey]:
+        Object.keys(paramPropsDiffMeta).length > 0
+          ? paramPropsDiffMeta
+          : undefined,
     }
 
     if (p[diffMetaKey] && 'name' in p[diffMetaKey]) {
