@@ -5,4 +5,4 @@ on:
 
 jobs:
   call-screenshot-tests-workflow:
-    uses: netcracker/qubership-apihub-ci/.github/workflows/screenshot-tests.yaml@main
+    uses: netcracker/qubership-apihub-ci/.github/workflows/screenshot-tests.yaml@bugfix/screenshot-tests-not-failing
