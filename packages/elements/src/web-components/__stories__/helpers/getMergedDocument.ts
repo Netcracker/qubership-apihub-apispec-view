@@ -40,7 +40,7 @@ export const getCompareResult = (
     ...NORMALIZE_OPTIONS,
     beforeSource: before,
     afterSource: after,
-    mode: COMPARE_MODE_DEFAULT,
+    mode: COMPARE_MODE_DEFAULT, // we do not really have guarantee that we have specs with single operation as an input, hence could not use COMPARE_MODE_SINGLE
     metaKey: diffMetaKey,
     onRefResolveError: (message: string, path: PropertyKey[], ref: string, errorType: RefErrorType) => {
       console.debug([
