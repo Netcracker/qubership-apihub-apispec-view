@@ -16,8 +16,8 @@
     "@netcracker/qubership-apihub-api-unifier": "feature-null-type",
     "@netcracker/qubership-apihub-compatibility-suites": "feature-null-type",
     "@netcracker/qubership-apihub-api-diff": "feature-null-type",
-    "@netcracker/qubership-apihub-api-doc-viewer": "2.1.0",
-    "@netcracker/qubership-apihub-http-spec": "5.5.7",
+    "@netcracker/qubership-apihub-api-doc-viewer": "dev",
+    "@netcracker/qubership-apihub-http-spec": "5.5.8",
     "@netcracker/qubership-apihub-jest-chrome-in-docker-environment": "2.0.0",
     "@schemastore/package": "0.0.4",
     "@stoplight/eslint-config": "2.1.0",
@@ -99,7 +99,7 @@
     "jest-puppeteer": "9.0.2",
     "jotai": "1.6.3",
     "json-schema": "^0.4.0",
-    "lerna": "8.2.1",
+    "lerna": "8.2.2",
     "local-web-server": "5.3.3",
     "lodash": "^4.17.19",
     "mark.js": "^8.11.1",
@@ -137,13 +137,15 @@
     "webpack-dev-server": "3.11.2",
     "xml-formatter": "^2.4.0",
     "raw-loader": "^4.0.2",
-    "@netcracker/qubership-apihub-npm-gitflow": "3.0.1"
+    "@netcracker/qubership-apihub-npm-gitflow": "3.1.0"
   },
   "scripts": {
     "build": "npm run build:dist",
     "build:dist": "npm run --workspace=@netcracker/qubership-apihub-apispec-view build",
     "build:showcase": "npm run --workspace=@netcracker/qubership-apihub-apispec-view build:showcase",
     "screenshot-test:ci": "npm run --workspace=@netcracker/qubership-apihub-apispec-view screenshot-test:ci",
+    "screenshot-test:docker": "npm run --workspace=@netcracker/qubership-apihub-apispec-view screenshot-test:docker",
+    "screenshot-test:regenerate-snapshots": "npm run --workspace=@netcracker/qubership-apihub-apispec-view screenshot-test:regenerate-snapshots",
     "update-lock-file": "update-lock-file @netcracker"
   }
 }
