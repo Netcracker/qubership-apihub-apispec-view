@@ -655,11 +655,11 @@ RenameMediaTypeAndADeeperChangeInResponseBody.args = {
 RenameMediaTypeAndADeeperChangeInResponseBody.storyName = '[Response] Rename media type and a deeper change in response body'
 
 // todo should be shown
-export const RenameMediaTypeInResponseBodyIsNotShown: any = Template.bind({})
-RenameMediaTypeInResponseBodyIsNotShown.args = {
+export const RenameMediaTypeInResponseBody: any = Template.bind({})
+RenameMediaTypeInResponseBody.args = {
   mergedDocument: getMergedDocument(renameMediaTypeInResponseBodyBefore, renameMediaTypeInResponseBodyAfter),
 }
-RenameMediaTypeInResponseBodyIsNotShown.storyName = '[Response] Rename media type in response body is not shown'
+RenameMediaTypeInResponseBody.storyName = '[Response] Rename media type in response body'
 
 export const RenameMediaTypeAndADeeperChangeInRequestBody: any = Template.bind({})
 RenameMediaTypeAndADeeperChangeInRequestBody.args = {
@@ -668,11 +668,11 @@ RenameMediaTypeAndADeeperChangeInRequestBody.args = {
 RenameMediaTypeAndADeeperChangeInRequestBody.storyName = '[Request] Rename media type and a deeper change in request body'
 
 // todo should be shown
-export const RenameMediaTypeInRequestBodyIsNotShown: any = Template.bind({})
-RenameMediaTypeInRequestBodyIsNotShown.args = {
+export const RenameMediaTypeInRequestBody: any = Template.bind({})
+RenameMediaTypeInRequestBody.args = {
   mergedDocument: getMergedDocument(renameMediaTypeInRequestBodyBefore, renameMediaTypeInRequestBodyAfter),
 }
-RenameMediaTypeInRequestBodyIsNotShown.storyName = '[Request] Rename media type in request body is not shown'
+RenameMediaTypeInRequestBody.storyName = '[Request] Rename media type in request body'
 
 // todo should be shown
 export const RenameMediaTypeAndADeeperChangeInPathItemParameter: any = Template.bind({})
