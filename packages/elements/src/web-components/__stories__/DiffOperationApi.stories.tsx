@@ -9,10 +9,10 @@ import { DeprecatedOperations } from '@netcracker/qubership-apihub-apispec-view-
 import {
   WhollyChangedRequestBodyOrResponse,
 } from '@netcracker/qubership-apihub-apispec-view-samples/operations-new-samples/operationsForWhollyChangedRequestBodyOrResponse'
-import renameMediaTypeAndADeeperChangeInResponseBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-body/before.yaml'
-import renameMediaTypeAndADeeperChangeInResponseBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-body/after.yaml'
-import renameMediaTypeInResponseBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-response-body/before.yaml'
-import renameMediaTypeInResponseBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-response-body/after.yaml'
+import renameMediaTypeAndADeeperChangeInResponseBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response/before.yaml'
+import renameMediaTypeAndADeeperChangeInResponseAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response/after.yaml'
+import renameMediaTypeInResponseBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-response/before.yaml'
+import renameMediaTypeInResponseAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-response/after.yaml'
 import renameMediaTypeAndADeeperChangeInRequestBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-request-body/before.yaml'
 import renameMediaTypeAndADeeperChangeInRequestBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-request-body/after.yaml'
 import renameMediaTypeInRequestBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-request-body/before.yaml'
@@ -648,18 +648,18 @@ ChangePathParamName.args = {
 }
 ChangePathParamName.storyName = '[path] Changed path param name'
 
-export const RenameMediaTypeAndADeeperChangeInResponseBody: any = Template.bind({})
-RenameMediaTypeAndADeeperChangeInResponseBody.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInResponseBodyBefore, renameMediaTypeAndADeeperChangeInResponseBodyAfter),
+export const RenameMediaTypeAndADeeperChangeInResponse: any = Template.bind({})
+RenameMediaTypeAndADeeperChangeInResponse.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInResponseBefore, renameMediaTypeAndADeeperChangeInResponseAfter),
 }
-RenameMediaTypeAndADeeperChangeInResponseBody.storyName = '[Response] Rename media type and a deeper change in response body'
+RenameMediaTypeAndADeeperChangeInResponse.storyName = '[Response] Rename media type and a deeper change in response'
 
 // todo should be shown
-export const RenameMediaTypeInResponseBody: any = Template.bind({})
-RenameMediaTypeInResponseBody.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeInResponseBodyBefore, renameMediaTypeInResponseBodyAfter),
+export const RenameMediaTypeInResponse: any = Template.bind({})
+RenameMediaTypeInResponse.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeInResponseBefore, renameMediaTypeInResponseAfter),
 }
-RenameMediaTypeInResponseBody.storyName = '[Response] Rename media type in response body'
+RenameMediaTypeInResponse.storyName = '[Response] Rename media type in response'
 
 export const RenameMediaTypeAndADeeperChangeInRequestBody: any = Template.bind({})
 RenameMediaTypeAndADeeperChangeInRequestBody.args = {
