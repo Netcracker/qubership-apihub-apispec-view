@@ -27,11 +27,14 @@ import renameMediaTypeAndADeeperChangeInResponseHeaderAfter from '@netcracker/qu
 import { COMPARE_DISPLAY_MODE } from '@stoplight/elements'
 import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
 import {
+  getCompareResult,
   getMergedDocument,
 } from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
 import { diffMetaKey } from 'diff-block'
 import React from 'react'
 import '../index'
+import { Meta, StoryObj } from '@storybook/react/*'
+import { stringifyDiffs } from '@stoplight/elements/web-components/__stories__/helpers/stringifyDiffs'
 
 declare global {
   namespace JSX {
@@ -648,49 +651,62 @@ ChangePathParamName.args = {
 }
 ChangePathParamName.storyName = '[path] Changed path param name'
 
-export const RenameMediaTypeAndADeeperChangeInResponse: any = Template.bind({})
-RenameMediaTypeAndADeeperChangeInResponse.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInResponseBefore, renameMediaTypeAndADeeperChangeInResponseAfter),
+function StoryComponent({ before, after }: { before: object, after: object }) {
+  const { diffs, merged } = getCompareResult(before, after)
+  console.log(stringifyDiffs(diffs))
+  console.log(diffs)
+  return <DiffOperationAPI mergedDocument={merged} filters={[]} diffMetaKey={diffMetaKey} />
 }
-RenameMediaTypeAndADeeperChangeInResponse.storyName = '[Response] Rename media type and a deeper change in response'
+
+const meta: Meta<{ before: object, after: object }> = {
+  title: 'web-components/DiffOperationAPI',
+}
+
+type Story = StoryObj<typeof meta>
+
+export const RenameMediaTypeAndADeeperChangeInResponse: Story = {
+  name: '[Response] Rename media type and a deeper change in response',
+  render: StoryComponent,
+  args: { before: renameMediaTypeAndADeeperChangeInResponseBefore, after: renameMediaTypeAndADeeperChangeInResponseAfter },
+}
 
 // todo should be shown
-export const RenameMediaTypeInResponse: any = Template.bind({})
-RenameMediaTypeInResponse.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeInResponseBefore, renameMediaTypeInResponseAfter),
+export const RenameMediaTypeInResponse: Story = {
+  name: '[Response] Rename media type in response',
+  render: StoryComponent,
+  args: { before: renameMediaTypeInResponseBefore, after: renameMediaTypeInResponseAfter },
 }
-RenameMediaTypeInResponse.storyName = '[Response] Rename media type in response'
 
-export const RenameMediaTypeAndADeeperChangeInRequestBody: any = Template.bind({})
-RenameMediaTypeAndADeeperChangeInRequestBody.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInRequestBodyBefore, renameMediaTypeAndADeeperChangeInRequestBodyAfter),
+export const RenameMediaTypeAndADeeperChangeInRequestBody: Story = {
+  name: '[Request] Rename media type and a deeper change in request body',
+  render: StoryComponent,
+  args: { before: renameMediaTypeAndADeeperChangeInRequestBodyBefore, after: renameMediaTypeAndADeeperChangeInRequestBodyAfter },
 }
-RenameMediaTypeAndADeeperChangeInRequestBody.storyName = '[Request] Rename media type and a deeper change in request body'
-
-// todo should be shown
-export const RenameMediaTypeInRequestBody: any = Template.bind({})
-RenameMediaTypeInRequestBody.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeInRequestBodyBefore, renameMediaTypeInRequestBodyAfter),
-}
-RenameMediaTypeInRequestBody.storyName = '[Request] Rename media type in request body'
 
 // todo should be shown
-export const RenameMediaTypeAndADeeperChangeInPathItemParameter: any = Template.bind({})
-RenameMediaTypeAndADeeperChangeInPathItemParameter.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInPathItemParameterBefore, renameMediaTypeAndADeeperChangeInPathItemParameterAfter),
+export const RenameMediaTypeInRequestBody: Story = {
+  name: '[Request] Rename media type in request body',
+  render: StoryComponent,
+  args: { before: renameMediaTypeInRequestBodyBefore, after: renameMediaTypeInRequestBodyAfter },
 }
-RenameMediaTypeAndADeeperChangeInPathItemParameter.storyName = '[Path Item Parameter] Rename media type and a deeper change in path item parameter'
 
 // todo should be shown
-export const RenameMediaTypeAndADeeperChangeInOperationParameter: any = Template.bind({})
-RenameMediaTypeAndADeeperChangeInOperationParameter.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInOperationParameterBefore, renameMediaTypeAndADeeperChangeInOperationParameterAfter),
+export const RenameMediaTypeAndADeeperChangeInPathItemParameter: Story = {
+  name: '[Path Item Parameter] Rename media type and a deeper change in path item parameter',
+  render: StoryComponent,
+  args: { before: renameMediaTypeAndADeeperChangeInPathItemParameterBefore, after: renameMediaTypeAndADeeperChangeInPathItemParameterAfter },
 }
-RenameMediaTypeAndADeeperChangeInOperationParameter.storyName = '[Operation Parameter] Rename media type and a deeper change in operation parameter'
 
 // todo should be shown
-export const RenameMediaTypeAndADeeperChangeInResponseHeader: any = Template.bind({})
-RenameMediaTypeAndADeeperChangeInResponseHeader.args = {
-  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInResponseHeaderBefore, renameMediaTypeAndADeeperChangeInResponseHeaderAfter),
+export const RenameMediaTypeAndADeeperChangeInOperationParameter: Story = {
+  name: '[Operation Parameter] Rename media type and a deeper change in operation parameter',
+  render: StoryComponent,
+  args: { before: renameMediaTypeAndADeeperChangeInOperationParameterBefore, after: renameMediaTypeAndADeeperChangeInOperationParameterAfter },
 }
-RenameMediaTypeAndADeeperChangeInResponseHeader.storyName = '[Response Header] Rename media type and a deeper change in response header'
+
+// todo should be shown
+export const RenameMediaTypeAndADeeperChangeInResponseHeader: Story = {
+  name: '[Response Header] Rename media type and a deeper change in response header',
+  render: StoryComponent,
+  args: { before: renameMediaTypeAndADeeperChangeInResponseHeaderBefore, after: renameMediaTypeAndADeeperChangeInResponseHeaderAfter },
+}

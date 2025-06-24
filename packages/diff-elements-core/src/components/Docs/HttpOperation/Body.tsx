@@ -59,7 +59,7 @@ export const Body = ({ body, onChange }: DiffBodyProps) => {
           wholeContentDiff = bodyContent[diffMetaKey].schema
         } else if (isDiff(bodyContent[diffMetaKey])) {
           const diff = bodyContent[diffMetaKey]
-          // todo ...
+          // todo temporarily disregard rename change in order to show deeper changes
           if (!isDiffRename(diff)) {
             // when whole media type was removed from body
             wholeContentDiff = bodyContent[diffMetaKey]

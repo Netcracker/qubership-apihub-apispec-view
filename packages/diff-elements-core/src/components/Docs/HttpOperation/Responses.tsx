@@ -206,7 +206,7 @@ const Response = ({ response, onMediaTypeChange, extensions, extensionsMeta }: R
           wholeContentDiff = responseContent[diffMetaKey].schema
         } else if (isDiff(responseContent[diffMetaKey])) {
           const diff = responseContent[diffMetaKey]
-          // todo ...
+          // todo temporarily disregard rename change in order to show deeper changes
           if (!isDiffRename(diff)) {
             // when whole media type was removed from response body
             wholeContentDiff = responseContent[diffMetaKey]
