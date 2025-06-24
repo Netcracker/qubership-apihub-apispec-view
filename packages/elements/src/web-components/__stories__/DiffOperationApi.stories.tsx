@@ -9,9 +9,26 @@ import { DeprecatedOperations } from '@netcracker/qubership-apihub-apispec-view-
 import {
   WhollyChangedRequestBodyOrResponse,
 } from '@netcracker/qubership-apihub-apispec-view-samples/operations-new-samples/operationsForWhollyChangedRequestBodyOrResponse'
+import renameMediaTypeAndADeeperChangeInResponseBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-body/before.yaml'
+import renameMediaTypeAndADeeperChangeInResponseBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-body/after.yaml'
+import renameMediaTypeInResponseBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-response-body/before.yaml'
+import renameMediaTypeInResponseBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-response-body/after.yaml'
+import renameMediaTypeAndADeeperChangeInRequestBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-request-body/before.yaml'
+import renameMediaTypeAndADeeperChangeInRequestBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-request-body/after.yaml'
+import renameMediaTypeInRequestBodyBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-request-body/before.yaml'
+import renameMediaTypeInRequestBodyAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-in-request-body/after.yaml'
+import renameMediaTypeAndADeeperChangeInPathItemParameterBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-path-item-parameter/before.yaml'
+import renameMediaTypeAndADeeperChangeInPathItemParameterAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-path-item-parameter/after.yaml'
+import renameMediaTypeAndADeeperChangeInOperationParameterBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-operation-parameter/before.yaml'
+import renameMediaTypeAndADeeperChangeInOperationParameterAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-operation-parameter/after.yaml'
+import renameMediaTypeAndADeeperChangeInResponseHeaderBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/before.yaml'
+import renameMediaTypeAndADeeperChangeInResponseHeaderAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/after.yaml'
+
 import { COMPARE_DISPLAY_MODE } from '@stoplight/elements'
 import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
-import { getMergedDocument } from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
+import {
+  getMergedDocument,
+} from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
 import { diffMetaKey } from 'diff-block'
 import React from 'react'
 import '../index'
@@ -630,3 +647,50 @@ ChangePathParamName.args = {
   )
 }
 ChangePathParamName.storyName = '[path] Changed path param name'
+
+export const RenameMediaTypeAndADeeperChangeInResponseBody: any = Template.bind({})
+RenameMediaTypeAndADeeperChangeInResponseBody.args = {
+  mergedDocument: () => getMergedDocument(renameMediaTypeAndADeeperChangeInResponseBodyBefore, renameMediaTypeAndADeeperChangeInResponseBodyAfter),
+}
+RenameMediaTypeAndADeeperChangeInResponseBody.storyName = '[Response] Rename media type and a deeper change in response body'
+
+// todo should be shown
+export const RenameMediaTypeInResponseBodyIsNotShown: any = Template.bind({})
+RenameMediaTypeInResponseBodyIsNotShown.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeInResponseBodyBefore, renameMediaTypeInResponseBodyAfter),
+}
+RenameMediaTypeInResponseBodyIsNotShown.storyName = '[Response] Rename media type in response body is not shown'
+
+export const RenameMediaTypeAndADeeperChangeInRequestBody: any = Template.bind({})
+RenameMediaTypeAndADeeperChangeInRequestBody.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInRequestBodyBefore, renameMediaTypeAndADeeperChangeInRequestBodyAfter),
+}
+RenameMediaTypeAndADeeperChangeInRequestBody.storyName = '[Request] Rename media type and a deeper change in request body'
+
+// todo should be shown
+export const RenameMediaTypeInRequestBodyIsNotShown: any = Template.bind({})
+RenameMediaTypeInRequestBodyIsNotShown.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeInRequestBodyBefore, renameMediaTypeInRequestBodyAfter),
+}
+RenameMediaTypeInRequestBodyIsNotShown.storyName = '[Request] Rename media type in request body is not shown'
+
+// todo should be shown
+export const RenameMediaTypeAndADeeperChangeInPathItemParameter: any = Template.bind({})
+RenameMediaTypeAndADeeperChangeInPathItemParameter.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInPathItemParameterBefore, renameMediaTypeAndADeeperChangeInPathItemParameterAfter),
+}
+RenameMediaTypeAndADeeperChangeInPathItemParameter.storyName = '[Path Item Parameter] Rename media type and a deeper change in path item parameter'
+
+// todo should be shown
+export const RenameMediaTypeAndADeeperChangeInOperationParameter: any = Template.bind({})
+RenameMediaTypeAndADeeperChangeInOperationParameter.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInOperationParameterBefore, renameMediaTypeAndADeeperChangeInOperationParameterAfter),
+}
+RenameMediaTypeAndADeeperChangeInOperationParameter.storyName = '[Operation Parameter] Rename media type and a deeper change in operation parameter'
+
+// todo should be shown
+export const RenameMediaTypeAndADeeperChangeInResponseHeader: any = Template.bind({})
+RenameMediaTypeAndADeeperChangeInResponseHeader.args = {
+  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInResponseHeaderBefore, renameMediaTypeAndADeeperChangeInResponseHeaderAfter),
+}
+RenameMediaTypeAndADeeperChangeInResponseHeader.storyName = '[Response Header] Rename media type and a deeper change in response header'
