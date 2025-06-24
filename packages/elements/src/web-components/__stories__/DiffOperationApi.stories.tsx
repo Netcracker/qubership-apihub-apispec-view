@@ -650,7 +650,7 @@ ChangePathParamName.storyName = '[path] Changed path param name'
 
 export const RenameMediaTypeAndADeeperChangeInResponseBody: any = Template.bind({})
 RenameMediaTypeAndADeeperChangeInResponseBody.args = {
-  mergedDocument: () => getMergedDocument(renameMediaTypeAndADeeperChangeInResponseBodyBefore, renameMediaTypeAndADeeperChangeInResponseBodyAfter),
+  mergedDocument: getMergedDocument(renameMediaTypeAndADeeperChangeInResponseBodyBefore, renameMediaTypeAndADeeperChangeInResponseBodyAfter),
 }
 RenameMediaTypeAndADeeperChangeInResponseBody.storyName = '[Response] Rename media type and a deeper change in response body'
 
