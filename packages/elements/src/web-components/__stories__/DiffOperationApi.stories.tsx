@@ -689,24 +689,3 @@ export const RenameMediaTypeInRequestBody: Story = {
   render: StoryComponent,
   args: { before: renameMediaTypeInRequestBodyBefore, after: renameMediaTypeInRequestBodyAfter },
 }
-
-// todo should be shown
-export const RenameMediaTypeAndADeeperChangeInPathItemParameter: Story = {
-  name: '[Path Item Parameter] Rename media type and a deeper change in path item parameter',
-  render: StoryComponent,
-  args: { before: renameMediaTypeAndADeeperChangeInPathItemParameterBefore, after: renameMediaTypeAndADeeperChangeInPathItemParameterAfter },
-}
-
-// todo should be shown
-export const RenameMediaTypeAndADeeperChangeInOperationParameter: Story = {
-  name: '[Operation Parameter] Rename media type and a deeper change in operation parameter',
-  render: StoryComponent,
-  args: { before: renameMediaTypeAndADeeperChangeInOperationParameterBefore, after: renameMediaTypeAndADeeperChangeInOperationParameterAfter },
-}
-
-// todo should be shown
-export const RenameMediaTypeAndADeeperChangeInResponseHeader: Story = {
-  name: '[Response Header] Rename media type and a deeper change in response header',
-  render: StoryComponent,
-  args: { before: renameMediaTypeAndADeeperChangeInResponseHeaderBefore, after: renameMediaTypeAndADeeperChangeInResponseHeaderAfter },
-}
