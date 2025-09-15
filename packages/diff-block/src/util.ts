@@ -169,7 +169,6 @@ export const combineDiffMetas = (diffs: Partial<Record<string, Diff | DiffMetaRe
 const extractAmountOfDiffsMemo = new WeakMap();
 const visitedSet = new Set();
 
-// FIXME 15.09.25 // Infinite loop is here
 export const extractAmountOfDiffs = (value: any, diffMetaKey: symbol): { [key in DiffType]: number } => {
   const initial = {
     [breaking]: 0,
