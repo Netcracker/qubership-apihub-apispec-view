@@ -135,10 +135,15 @@ export const DiffOperationAPIImpl: React.FC<DiffAPIProps> = props => {
     diffMetaKeys: { diffsMetaKey, aggregatedDiffsMetaKey },
   } = props
 
-  const operationNode = useMemo(() => {
-    return transformOasToServiceNodeWithDiffMeta(mergedDocument, diffsMetaKey)?.children?.find(({ type }) => type === 'http_operation')
+  const operationNode = useMemo(() => (
+    transformOasToServiceNodeWithDiffMeta(mergedDocument, diffsMetaKey)
+      ?.children
+      ?.find(({ type }) => type === 'http_operation')
       ?.data as IHttpOperation | null
-  }, [diffsMetaKey, mergedDocument])
+  ), [diffsMetaKey, mergedDocument])
+
+  console.debug('ASV meta keys', diffsMetaKey, aggregatedDiffsMetaKey)
+  console.debug('ASV merged document', mergedDocument)
 
   const exportProps = useExportDocumentProps({
     originalDocument: document,
