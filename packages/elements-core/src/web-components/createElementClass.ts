@@ -169,21 +169,7 @@ export const createElementClass = <P>(
 
     private _renderComponent() {
       if (this._mountPoint) {
-        const props = mapValues(propDescriptors, (descriptor, key) => {
-          const propValue = this._props[key] ?? descriptor.defaultValue;
-          // Preserve Symbol keys in object properties (e.g., mergedDocument with diffsMetaKey)
-          if (propValue && typeof propValue === 'object' && !Array.isArray(propValue)) {
-            const symbolKeys = Object.getOwnPropertySymbols(this._props[key] || {});
-            if (symbolKeys.length > 0) {
-              const enhanced = { ...propValue };
-              symbolKeys.forEach(sym => {
-                enhanced[sym] = this._props[key][sym];
-              });
-              return enhanced;
-            }
-          }
-          return propValue;
-        });
+        const props = mapValues(propDescriptors, (descriptor, key) => this._props[key] ?? descriptor.defaultValue);
         ReactDOM.render(React.createElement(Component, props), this._mountPoint);
       }
     }
