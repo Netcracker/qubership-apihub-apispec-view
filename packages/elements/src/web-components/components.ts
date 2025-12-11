@@ -137,7 +137,7 @@ export const DiffApiOperationElement = createElementClass(
     options: { type: 'object' },
     // @ts-ignore
     mergedDocument: { type: 'object' },
-    diffMetaKey: { type: 'symbol' },
+    diffsMetaKey: { type: 'symbol' },
     aggregatedDiffsMetaKey: { type: 'symbol' },
   },
   [
