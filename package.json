@@ -143,6 +143,7 @@
     "yaml-loader": "^0.8.1"
   },
   "scripts": {
+    "generate-compatibility-suite": "npm run --workspace=@netcracker/qubership-apihub-apispec-view generate-stories && npm run --workspace=@netcracker/qubership-apihub-apispec-view generate-tests",
     "build": "npm run build:dist",
     "build:dist": "npm run --workspace=@netcracker/qubership-apihub-apispec-view build",
     "build:showcase": "npm run --workspace=@netcracker/qubership-apihub-apispec-view build:showcase",
