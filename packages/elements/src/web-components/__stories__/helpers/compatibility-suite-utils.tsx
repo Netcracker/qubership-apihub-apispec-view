@@ -1,6 +1,6 @@
 import {
   getCompatibilitySuite,
-  OpenApiVersionPair,
+  SpecificationVersionPair,
   TestSpecType,
 } from '@netcracker/qubership-apihub-compatibility-suites'
 import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
@@ -45,8 +45,8 @@ export function getStoryArgs(
   suiteType: TestSpecType,
   suiteId: string,
   testId: string,
-  openApiVersionPair?: OpenApiVersionPair,
+  specificationVersionPair?: SpecificationVersionPair,
 ): OpenapiCompatibilitySuiteStoryArgs {
-  const [before, after] = getCompatibilitySuite(suiteType, suiteId, testId, openApiVersionPair)
+  const [before, after] = getCompatibilitySuite(suiteType, suiteId, testId, specificationVersionPair)
   return { before, after }
 }

@@ -1,6 +1,6 @@
 import {
   getCompatibilitySuites,
-  getOpenApiCompatibilitySuiteVersionPairs,
+  getCompatibilitySuiteSpecificationVersionPairs,
   TEST_SPEC_TYPE_OPEN_API,
 } from '@netcracker/qubership-apihub-compatibility-suites'
 import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'fs'
@@ -12,8 +12,8 @@ const SKIPPED_OUT_DIR_NAMES = ['__image_snapshots__', 'service']
 const ELEMENTS_PACKAGE_ROOT = path.resolve(import.meta.dirname, '..')
 
 /**
- * @typedef {[string, string]} OpenApiVersionPair
- * @typedef {{ testId: string, openApiVersionPair: OpenApiVersionPair | null }} OpenApiCaseVariant
+ * @typedef {[string, string]} SpecificationVersionPair
+ * @typedef {{ testId: string, openApiVersionPair: SpecificationVersionPair | null }} OpenApiCaseVariant
  * @typedef {Map<string, Map<string, OpenApiCaseVariant[]>>} OpenApiCasesByPairGroup
  */
 
@@ -26,7 +26,7 @@ const toMajorMinor = (v) => (v.startsWith('3.1') ? '3.1' : '3.0')
 
 /**
  * Converts an OpenAPI version pair to a major.minor group string (used for Storybook sections).
- * @param {OpenApiVersionPair} openApiVersionPair - Tuple of [beforeVersion, afterVersion]
+ * @param {SpecificationVersionPair} openApiVersionPair - Tuple of [beforeVersion, afterVersion]
  * @returns {string} Group string like '3.0-3.1'
  */
 const toPairGroup = ([beforeV, afterV]) => `${toMajorMinor(beforeV)}-${toMajorMinor(afterV)}`
@@ -64,7 +64,7 @@ const getOpenApiCasesByPairGroup = (excludedSuiteIds = DEFAULT_EXCLUDED_SUITE_ID
     if (excludedSuiteIds.includes(suiteId)) continue
 
     for (const testId of testIds) {
-      const pairs = getOpenApiCompatibilitySuiteVersionPairs(suiteId, testId)
+      const pairs = getCompatibilitySuiteSpecificationVersionPairs(TEST_SPEC_TYPE_OPEN_API, suiteId, testId)
 
       for (const openApiVersionPair of pairs) {
         const group = toPairGroup(openApiVersionPair)
