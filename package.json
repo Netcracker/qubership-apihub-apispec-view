@@ -26,7 +26,7 @@
     "@netcracker/qubership-apihub-api-unifier": "feature-asyncapi-basic-e2e",
     "@netcracker/qubership-apihub-compatibility-suites": "dev",
     "@netcracker/qubership-apihub-api-diff": "feature-asyncapi-basic-e2e",
-    "@netcracker/qubership-apihub-api-doc-viewer": "feature-async-api-tree",
+    "@netcracker/qubership-apihub-api-doc-viewer": "feature-async-api-doc-view-2",
     "@netcracker/qubership-apihub-http-spec": "5.5.9",
     "@netcracker/qubership-apihub-jest-chrome-in-docker-environment": "2.0.0",
     "@netcracker/qubership-apihub-npm-gitflow": "3.1.0",
