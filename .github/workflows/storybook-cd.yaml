@@ -1,11 +1,12 @@
 name: Storybook CD Workflow
 
 on:
-  push: 
+  push:
     branches:
+      - '**'
   delete:
-    branches:      
 
-jobs: 
+jobs:
   call-storybook-cd-workflow:
-    uses: netcracker/qubership-apihub-ci/.github/workflows/storybook-cd.yaml@main 
+    if: github.event_name == 'push' || github.event.ref_type == 'branch'
+    uses: netcracker/qubership-apihub-ci/.github/workflows/storybook-cd.yaml@feature/ci-frontend-stability
