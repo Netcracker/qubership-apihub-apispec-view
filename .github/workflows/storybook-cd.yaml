@@ -8,5 +8,4 @@ on:
 
 jobs:
   call-storybook-cd-workflow:
-    if: github.event_name == 'push' || github.event.ref_type == 'branch'
-    uses: netcracker/qubership-apihub-ci/.github/workflows/storybook-cd.yaml@feature/ci-frontend-stability
+    uses: netcracker/qubership-apihub-ci/.github/workflows/storybook-cd.yaml@main
