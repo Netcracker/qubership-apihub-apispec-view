@@ -16,7 +16,7 @@
     ".": "./dist/index.js"
   },
   "engines": {
-    "node": ">=14.13"
+    "node": ">=24.0.0"
   },
   "scripts": {
     "generate-stories": "node bin/generate-openapi-compatibility-suite-stories.mjs",

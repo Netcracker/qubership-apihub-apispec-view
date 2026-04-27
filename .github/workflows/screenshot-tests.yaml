@@ -12,6 +12,6 @@ on:
 
 jobs:
   call-screenshot-tests-workflow:
-    uses: netcracker/qubership-apihub-ci/.github/workflows/screenshot-tests.yaml@main
+    uses: netcracker/qubership-apihub-ci/.github/workflows/screenshot-tests.yaml@feature/nodejs24
     with:
       update_screenshots: ${{ inputs.update_screenshots || false }}
