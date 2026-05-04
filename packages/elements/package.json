@@ -29,9 +29,9 @@
     "development:storybook": "npm run generate-stories && storybook dev -p 9099",
     "development:local-server:static": "npm run build:showcase && ws -p 9009 -d ../../dist-showcase --spa index.html --static.maxage 3600",
     "screenshot-test:ci": "start-server-and-test development:local-server:static http://localhost:9009 \"npm run generate-tests && jest --maxWorkers 4 -c .config/it/it-test.jest.config.js\"",
-    "screenshot-test:docker": "start-server-and-test development:local-server:static http://localhost:9009 \"npm run generate-tests && jest --maxWorkers 1 -c .config/it/it-test-docker.jest.config.js\"",
+    "screenshot-test:docker": "start-server-and-test development:local-server:static http://localhost:9009 \"npm run generate-tests && jest --maxWorkers 4 -c .config/it/it-test-docker.jest.config.js\"",
     "regenerate-screenshots:ci": "start-server-and-test development:local-server:static http://localhost:9009 \"npm run generate-tests && jest --maxWorkers 4 --updateSnapshot -c .config/it/it-test.jest.config.js\"",
-    "regenerate-screenshots:docker": "start-server-and-test development:local-server:static http://localhost:9009 \"npm run generate-tests && jest --maxWorkers 1 --updateSnapshot -c .config/it/it-test-docker.jest.config.js\"",
+    "regenerate-screenshots:docker": "start-server-and-test development:local-server:static http://localhost:9009 \"npm run generate-tests && jest --maxWorkers 4 --updateSnapshot -c .config/it/it-test-docker.jest.config.js\"",
     "type-check": "tsc --noEmit"
   },
   "rollup": {
