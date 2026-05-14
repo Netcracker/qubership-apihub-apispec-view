@@ -10,10 +10,10 @@
     "generate-compatibility-suite": "lerna run generate-stories && lerna run generate-tests",
     "build": "lerna run build",
     "build:showcase": "lerna run build:showcase",
-    "screenshot-test:ci": "lerna run screenshot-test:ci",
-    "screenshot-test:docker": "lerna run screenshot-test:docker",
-    "regenerate-screenshots:ci": "lerna run regenerate-screenshots:ci",
-    "regenerate-screenshots:docker": "lerna run regenerate-screenshots:docker",
+    "screenshot-test": "lerna run screenshot-test",
+    "screenshot-test:ci-legacy": "lerna run screenshot-test:ci-legacy",
+    "regenerate-screenshots": "lerna run regenerate-screenshots",
+    "regenerate-screenshots:ci-legacy": "lerna run regenerate-screenshots:ci-legacy",
     "update-lock-file": "update-lock-file @netcracker"
   },
   "devDependencies": {
