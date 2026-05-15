@@ -11,9 +11,7 @@
     "build": "lerna run build",
     "build:showcase": "lerna run build:showcase",
     "screenshot-test": "lerna run screenshot-test",
-    "screenshot-test:ci-legacy": "lerna run screenshot-test:ci-legacy",
     "regenerate-screenshots": "lerna run regenerate-screenshots",
-    "regenerate-screenshots:ci-legacy": "lerna run regenerate-screenshots:ci-legacy",
     "update-lock-file": "update-lock-file @netcracker"
   },
   "devDependencies": {
