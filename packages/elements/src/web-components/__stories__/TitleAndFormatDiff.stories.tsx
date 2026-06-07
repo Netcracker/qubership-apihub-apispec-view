@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react/*'
-import { caseDocs, CASES, StoryComponent } from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
+import { caseDocs, CaseId, CASES, StoryComponent } from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
 import '../index'
 
 const meta: Meta<{ before: object; after: object }> = {
@@ -9,38 +9,38 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const story = (id: string): Story => ({
+const story = (id: CaseId): Story => ({
   render: StoryComponent,
   args: caseDocs(CASES[id].before, CASES[id].after, false),
-  name: `[${id}] ${CASES[id].name}`,
+  name: CASES[id].name,
 })
 
-export const A1 = story('A1')
-export const A2 = story('A2')
-export const A3 = story('A3')
+export const BaselineTitleOnly = story('BaselineTitleOnly')
+export const BaselineFormatOnly = story('BaselineFormatOnly')
+export const BaselineTitleAndFormat = story('BaselineTitleAndFormat')
 
-export const B1 = story('B1')
-export const B2 = story('B2')
-export const B3 = story('B3')
+export const FormatAddedNoTitle = story('FormatAddedNoTitle')
+export const FormatRemovedNoTitle = story('FormatRemovedNoTitle')
+export const FormatReplacedNoTitle = story('FormatReplacedNoTitle')
 
-export const C1 = story('C1')
-export const C2 = story('C2')
-export const C3 = story('C3')
+export const FormatAddedTitleUnchanged = story('FormatAddedTitleUnchanged')
+export const FormatRemovedTitleUnchanged = story('FormatRemovedTitleUnchanged')
+export const FormatReplacedTitleUnchanged = story('FormatReplacedTitleUnchanged')
 
-export const D1 = story('D1')
-export const D2 = story('D2')
-export const D3 = story('D3')
+export const TitleAddedNoFormat = story('TitleAddedNoFormat')
+export const TitleRemovedNoFormat = story('TitleRemovedNoFormat')
+export const TitleReplacedNoFormat = story('TitleReplacedNoFormat')
 
-export const E1 = story('E1')
-export const E2 = story('E2')
-export const E3 = story('E3')
+export const TitleAddedFormatUnchanged = story('TitleAddedFormatUnchanged')
+export const TitleRemovedFormatUnchanged = story('TitleRemovedFormatUnchanged')
+export const TitleReplacedFormatUnchanged = story('TitleReplacedFormatUnchanged')
 
-export const F1 = story('F1')
-export const F2 = story('F2')
-export const F3 = story('F3')
-export const F4 = story('F4')
-export const F5 = story('F5')
-export const F6 = story('F6')
-export const F7 = story('F7')
-export const F8 = story('F8')
-export const F9 = story('F9')
+export const BothAdded = story('BothAdded')
+export const BothRemoved = story('BothRemoved')
+export const BothReplaced = story('BothReplaced')
+export const TitleAddedFormatRemoved = story('TitleAddedFormatRemoved')
+export const TitleRemovedFormatAdded = story('TitleRemovedFormatAdded')
+export const TitleAddedFormatReplaced = story('TitleAddedFormatReplaced')
+export const TitleRemovedFormatReplaced = story('TitleRemovedFormatReplaced')
+export const TitleReplacedFormatAdded = story('TitleReplacedFormatAdded')
+export const TitleReplacedFormatRemoved = story('TitleReplacedFormatRemoved')

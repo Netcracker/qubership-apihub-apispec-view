@@ -98,40 +98,43 @@ export function StoryComponent({ before, after }: { before: object; after: objec
 export type CaseDef = { name: string; before: Qualifier; after: Qualifier }
 
 // Every case as a before -> after pair of qualifiers.
-export const CASES: Record<string, CaseDef> = {
-  // A - Baselines (no diff), to show the combined rendering
-  A1: { name: 'Baseline — title only (unchanged)', before: { title: 'Order' }, after: { title: 'Order' } },
-  A2: { name: 'Baseline — format only (unchanged)', before: { format: 'date-time' }, after: { format: 'date-time' } },
-  A3: { name: 'Baseline — title + format (unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Order', format: 'date-time' } },
+// Keys are meaningful identifiers used as the story export names; `name` is the display label.
+export const CASES = {
+  // Baselines (no diff), to show the combined rendering
+  BaselineTitleOnly: { name: 'Baseline — title only (unchanged)', before: { title: 'Order' }, after: { title: 'Order' } },
+  BaselineFormatOnly: { name: 'Baseline — format only (unchanged)', before: { format: 'date-time' }, after: { format: 'date-time' } },
+  BaselineTitleAndFormat: { name: 'Baseline — title + format (unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Order', format: 'date-time' } },
 
-  // B - Format changes, no title
-  B1: { name: 'Format added (no title)', before: {}, after: { format: 'date-time' } },
-  B2: { name: 'Format removed (no title)', before: { format: 'date-time' }, after: {} },
-  B3: { name: 'Format replaced (no title)', before: { format: 'date-time' }, after: { format: 'date' } },
+  // Format changes, no title
+  FormatAddedNoTitle: { name: 'Format added (no title)', before: {}, after: { format: 'date-time' } },
+  FormatRemovedNoTitle: { name: 'Format removed (no title)', before: { format: 'date-time' }, after: {} },
+  FormatReplacedNoTitle: { name: 'Format replaced (no title)', before: { format: 'date-time' }, after: { format: 'date' } },
 
-  // C - Format changes, title present & unchanged (previously broken)
-  C1: { name: 'Format added (title unchanged)', before: { title: 'Order' }, after: { title: 'Order', format: 'date-time' } },
-  C2: { name: 'Format removed (title unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Order' } },
-  C3: { name: 'Format replaced (title unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Order', format: 'date' } },
+  // Format changes, title present & unchanged (previously broken)
+  FormatAddedTitleUnchanged: { name: 'Format added (title unchanged)', before: { title: 'Order' }, after: { title: 'Order', format: 'date-time' } },
+  FormatRemovedTitleUnchanged: { name: 'Format removed (title unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Order' } },
+  FormatReplacedTitleUnchanged: { name: 'Format replaced (title unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Order', format: 'date' } },
 
-  // D - Title changes, no format
-  D1: { name: 'Title added (no format)', before: {}, after: { title: 'Order' } },
-  D2: { name: 'Title removed (no format)', before: { title: 'Order' }, after: {} },
-  D3: { name: 'Title replaced (no format)', before: { title: 'Order' }, after: { title: 'Invoice' } },
+  // Title changes, no format
+  TitleAddedNoFormat: { name: 'Title added (no format)', before: {}, after: { title: 'Order' } },
+  TitleRemovedNoFormat: { name: 'Title removed (no format)', before: { title: 'Order' }, after: {} },
+  TitleReplacedNoFormat: { name: 'Title replaced (no format)', before: { title: 'Order' }, after: { title: 'Invoice' } },
 
-  // E - Title changes, format present & unchanged
-  E1: { name: 'Title added (format unchanged)', before: { format: 'date-time' }, after: { title: 'Order', format: 'date-time' } },
-  E2: { name: 'Title removed (format unchanged)', before: { title: 'Order', format: 'date-time' }, after: { format: 'date-time' } },
-  E3: { name: 'Title replaced (format unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice', format: 'date-time' } },
+  // Title changes, format present & unchanged
+  TitleAddedFormatUnchanged: { name: 'Title added (format unchanged)', before: { format: 'date-time' }, after: { title: 'Order', format: 'date-time' } },
+  TitleRemovedFormatUnchanged: { name: 'Title removed (format unchanged)', before: { title: 'Order', format: 'date-time' }, after: { format: 'date-time' } },
+  TitleReplacedFormatUnchanged: { name: 'Title replaced (format unchanged)', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice', format: 'date-time' } },
 
-  // F - Both change at once
-  F1: { name: 'Both added', before: {}, after: { title: 'Order', format: 'date-time' } },
-  F2: { name: 'Both removed', before: { title: 'Order', format: 'date-time' }, after: {} },
-  F3: { name: 'Both replaced', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice', format: 'date' } },
-  F4: { name: 'Title added + format removed', before: { format: 'date-time' }, after: { title: 'Order' } },
-  F5: { name: 'Title removed + format added', before: { title: 'Order' }, after: { format: 'date-time' } },
-  F6: { name: 'Title added + format replaced', before: { format: 'date-time' }, after: { title: 'Order', format: 'date' } },
-  F7: { name: 'Title removed + format replaced', before: { title: 'Order', format: 'date-time' }, after: { format: 'date' } },
-  F8: { name: 'Title replaced + format added', before: { title: 'Order' }, after: { title: 'Invoice', format: 'date-time' } },
-  F9: { name: 'Title replaced + format removed', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice' } },
-}
+  // Both change at once
+  BothAdded: { name: 'Both added', before: {}, after: { title: 'Order', format: 'date-time' } },
+  BothRemoved: { name: 'Both removed', before: { title: 'Order', format: 'date-time' }, after: {} },
+  BothReplaced: { name: 'Both replaced', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice', format: 'date' } },
+  TitleAddedFormatRemoved: { name: 'Title added + format removed', before: { format: 'date-time' }, after: { title: 'Order' } },
+  TitleRemovedFormatAdded: { name: 'Title removed + format added', before: { title: 'Order' }, after: { format: 'date-time' } },
+  TitleAddedFormatReplaced: { name: 'Title added + format replaced', before: { format: 'date-time' }, after: { title: 'Order', format: 'date' } },
+  TitleRemovedFormatReplaced: { name: 'Title removed + format replaced', before: { title: 'Order', format: 'date-time' }, after: { format: 'date' } },
+  TitleReplacedFormatAdded: { name: 'Title replaced + format added', before: { title: 'Order' }, after: { title: 'Invoice', format: 'date-time' } },
+  TitleReplacedFormatRemoved: { name: 'Title replaced + format removed', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice' } },
+} satisfies Record<string, CaseDef>
+
+export type CaseId = keyof typeof CASES
