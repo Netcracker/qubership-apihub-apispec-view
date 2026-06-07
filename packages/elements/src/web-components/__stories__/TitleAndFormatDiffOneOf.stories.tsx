@@ -3,7 +3,7 @@ import { caseDocs, CASES, StoryComponent } from '@stoplight/elements/web-compone
 import '../index'
 
 const meta: Meta<{ before: object; after: object }> = {
-  title: 'Title & Format Diffs/Direct',
+  title: 'Title & Format Diffs/oneOf',
 }
 export default meta
 
@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>
 
 const story = (id: string): Story => ({
   render: StoryComponent,
-  args: caseDocs(CASES[id].before, CASES[id].after, false),
+  args: caseDocs(CASES[id].before, CASES[id].after, true),
   name: `[${id}] ${CASES[id].name}`,
 })
 
