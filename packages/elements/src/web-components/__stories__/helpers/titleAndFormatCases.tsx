@@ -97,9 +97,16 @@ export function StoryComponent({ before, after }: { before: object; after: objec
 
 export type CaseDef = { name: string; before: Qualifier; after: Qualifier }
 
+// Identity helper that validates each entry against `CaseDef` while preserving the literal
+// keys (so `CaseId` stays a union of the actual case names). Avoids the `satisfies` operator,
+// which the Storybook Babel pipeline does not parse.
+function defineCases<T extends Record<string, CaseDef>>(cases: T): T {
+  return cases
+}
+
 // Every case as a before -> after pair of qualifiers.
 // Keys are meaningful identifiers used as the story export names; `name` is the display label.
-export const CASES = {
+export const CASES = defineCases({
   // Baselines (no diff), to show the combined rendering
   BaselineTitleOnly: { name: 'Baseline — title only (unchanged)', before: { title: 'Order' }, after: { title: 'Order' } },
   BaselineFormatOnly: { name: 'Baseline — format only (unchanged)', before: { format: 'date-time' }, after: { format: 'date-time' } },
@@ -135,6 +142,6 @@ export const CASES = {
   TitleRemovedFormatReplaced: { name: 'Title removed + format replaced', before: { title: 'Order', format: 'date-time' }, after: { format: 'date' } },
   TitleReplacedFormatAdded: { name: 'Title replaced + format added', before: { title: 'Order' }, after: { title: 'Invoice', format: 'date-time' } },
   TitleReplacedFormatRemoved: { name: 'Title replaced + format removed', before: { title: 'Order', format: 'date-time' }, after: { title: 'Invoice' } },
-} satisfies Record<string, CaseDef>
+})
 
 export type CaseId = keyof typeof CASES
