@@ -1,5 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react/*'
-import { caseDocs, CaseId, CASES, StoryComponent } from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
+import {
+  caseDocs,
+  CaseId,
+  CASES,
+  collectionsActionsOneOfSchema,
+  fieldDoc,
+  StoryComponent,
+} from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
 import '../index'
 
 const meta: Meta<{ before: object; after: object }> = {
@@ -44,3 +51,23 @@ export const TitleAddedFormatReplaced = story('TitleAddedFormatReplaced')
 export const TitleRemovedFormatReplaced = story('TitleRemovedFormatReplaced')
 export const TitleReplacedFormatAdded = story('TitleReplacedFormatAdded')
 export const TitleReplacedFormatRemoved = story('TitleReplacedFormatRemoved')
+
+// --- Array with long title as a oneOf option ---
+
+export const CollectionsActionsArrayInOneOf: Story = {
+  render: StoryComponent,
+  args: {
+    before: fieldDoc('collectionsActions', collectionsActionsOneOfSchema(true)),
+    after: fieldDoc('collectionsActions', collectionsActionsOneOfSchema(true)),
+  },
+  name: 'Array of objects (oneOf option) with long title — collectionsActions',
+}
+
+export const CollectionsActionsArrayInOneOfTitleAdded: Story = {
+  render: StoryComponent,
+  args: {
+    before: fieldDoc('collectionsActions', collectionsActionsOneOfSchema(false)),
+    after: fieldDoc('collectionsActions', collectionsActionsOneOfSchema(true)),
+  },
+  name: 'Array of objects (oneOf option) — long title added (collectionsActions)',
+}

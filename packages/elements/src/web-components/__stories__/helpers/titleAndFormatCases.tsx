@@ -82,6 +82,70 @@ export function caseDocs(
   return { before: buildDoc(b.schema, b.schemas), after: buildDoc(a.schema, a.schemas) }
 }
 
+// --- Array / object long-title cases ------------------------------------------------------
+
+export const COLLECTIONS_ACTIONS_TITLE = 'Collections actions'
+export const AMOUNT_TITLE = 'Represents an amount of money with its currency type.'
+
+const COLLECTIONS_ACTIONS_ITEMS = {
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    action: { type: 'string' },
+  },
+}
+
+// array of objects, optionally carrying the long `title`
+export function collectionsActionsArraySchema(withTitle: boolean): any {
+  return {
+    type: 'array',
+    ...(withTitle ? { title: COLLECTIONS_ACTIONS_TITLE } : {}),
+    items: COLLECTIONS_ACTIONS_ITEMS,
+  }
+}
+
+// same array, but as one option of a oneOf combiner (alongside a stable sibling)
+export function collectionsActionsOneOfSchema(withTitle: boolean): any {
+  return { oneOf: [collectionsActionsArraySchema(withTitle), ONE_OF_SIBLING] }
+}
+
+// object, optionally carrying the long `title`
+export function amountObjectSchema(title: string | undefined): any {
+  return {
+    type: 'object',
+    ...(title ? { title } : {}),
+    properties: {
+      value: { type: 'number' },
+      currency: { type: 'string' },
+    },
+  }
+}
+
+// Build a doc whose request-body object exposes a single named field.
+export function fieldDoc(fieldName: string, schema: any): object {
+  return {
+    openapi: '3.0.0',
+    info: { title: 'Title & Format Diffs', version: '1.0.0' },
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: { [fieldName]: schema },
+                },
+              },
+            },
+          },
+          responses: { '200': { description: 'OK' } },
+        },
+      },
+    },
+  }
+}
+
 export function StoryComponent({ before, after }: { before: object; after: object }) {
   const { diffs, merged } = getCompareResult(before, after)
   console.log(stringifyDiffs(diffs))

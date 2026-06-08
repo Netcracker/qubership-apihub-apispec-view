@@ -1,5 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react/*'
-import { caseDocs, CaseId, CASES, StoryComponent } from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
+import {
+  amountObjectSchema,
+  AMOUNT_TITLE,
+  caseDocs,
+  CaseId,
+  CASES,
+  collectionsActionsArraySchema,
+  fieldDoc,
+  StoryComponent,
+} from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
 import '../index'
 
 const meta: Meta<{ before: object; after: object }> = {
@@ -44,3 +53,41 @@ export const TitleAddedFormatReplaced = story('TitleAddedFormatReplaced')
 export const TitleRemovedFormatReplaced = story('TitleRemovedFormatReplaced')
 export const TitleReplacedFormatAdded = story('TitleReplacedFormatAdded')
 export const TitleReplacedFormatRemoved = story('TitleReplacedFormatRemoved')
+
+// --- Arrays / objects with long titles ---
+
+export const CollectionsActionsArray: Story = {
+  render: StoryComponent,
+  args: {
+    before: fieldDoc('collectionsActions', collectionsActionsArraySchema(true)),
+    after: fieldDoc('collectionsActions', collectionsActionsArraySchema(true)),
+  },
+  name: 'Array of objects with long title — collectionsActions',
+}
+
+export const CollectionsActionsArrayTitleAdded: Story = {
+  render: StoryComponent,
+  args: {
+    before: fieldDoc('collectionsActions', collectionsActionsArraySchema(false)),
+    after: fieldDoc('collectionsActions', collectionsActionsArraySchema(true)),
+  },
+  name: 'Array of objects — long title added (collectionsActions)',
+}
+
+export const AmountObject: Story = {
+  render: StoryComponent,
+  args: {
+    before: fieldDoc('amount', amountObjectSchema(AMOUNT_TITLE)),
+    after: fieldDoc('amount', amountObjectSchema(AMOUNT_TITLE)),
+  },
+  name: 'Object with long title — amount',
+}
+
+export const AmountObjectTitleAdded: Story = {
+  render: StoryComponent,
+  args: {
+    before: fieldDoc('amount', amountObjectSchema(undefined)),
+    after: fieldDoc('amount', amountObjectSchema(AMOUNT_TITLE)),
+  },
+  name: 'Object — long title added (amount)',
+}
