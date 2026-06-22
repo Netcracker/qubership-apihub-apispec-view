@@ -40,7 +40,7 @@ export const DiffContainer: React.FC<DiffContainerProps> = ({ children }) => {
       </div>
       {isCompareMode && (
         <>
-          <Box mx={6} w="px" bg="canvas-200" />
+          {/* <Box mx={6} w="px" bg="canvas-200" /> */}
           <div style={{ flex: '0 1 50%', minWidth: 0, zIndex: 10 }}>
             <DiffContextProvider containerElement={ref} side="after">
               {React.Children.only(React.cloneElement(children))}
