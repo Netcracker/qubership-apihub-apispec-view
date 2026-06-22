@@ -33,15 +33,14 @@ export const DiffContainer: React.FC<DiffContainerProps> = ({ children }) => {
           overflowY="hidden"
         />
       )}
-      <div style={{ flex: `0 1 ${isCompareMode ? '50%' : '100%'}`, minWidth: 0, zIndex: 10 }}>
+      <div style={{ flex: `0 1 ${isCompareMode ? '50%' : '100%'}`, minWidth: 0, zIndex: 10, paddingLeft: 8, paddingRight: 8 }}>
         <DiffContextProvider containerElement={ref} side={isCompareMode ? 'before' : 'undefined'}>
           {children}
         </DiffContextProvider>
       </div>
       {isCompareMode && (
         <>
-          {/* <Box mx={6} w="px" bg="canvas-200" /> */}
-          <div style={{ flex: '0 1 50%', minWidth: 0, zIndex: 10 }}>
+          <div style={{ flex: '0 1 50%', minWidth: 0, zIndex: 10, paddingLeft: 8, paddingRight: 8 }}>
             <DiffContextProvider containerElement={ref} side="after">
               {React.Children.only(React.cloneElement(children))}
             </DiffContextProvider>
