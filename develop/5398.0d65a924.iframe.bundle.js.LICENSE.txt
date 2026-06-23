@@ -106,8 +106,6 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
-/*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT */
-
 /*!***************************************************
 * mark.js v8.11.1
 * https://markjs.io/
