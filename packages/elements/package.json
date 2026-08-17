@@ -38,5 +38,12 @@
     "bundleDeps": [
       "@fortawesome/free-solid-svg-icons"
     ]
+  },
+  "dependencies": {
+    "openapi3-ts": "2.0.2"
+  },
+  "devDependencies": {
+    "@jest/globals": "30.4.1",
+    "jest-snapshot": "30.4.1"
   }
 }
