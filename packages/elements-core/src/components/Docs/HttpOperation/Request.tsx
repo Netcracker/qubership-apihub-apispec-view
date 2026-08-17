@@ -1,4 +1,4 @@
-import { Extension, Extensions } from '@stoplight/elements-core/components/Docs/Extensions';
+import { Extension, Extensions } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Extensions';
 import { Box, VStack } from '@stoplight/mosaic';
 import { HttpSecurityScheme, IHttpOperation } from '@stoplight/types';
 import { useAtom } from 'jotai';

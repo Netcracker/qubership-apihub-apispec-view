@@ -1,4 +1,4 @@
-import { BlockquoteComponent } from '@stoplight/diff-elements-core/components/MarkdownViewer/CustomComponents/BlockquoteComponent';
+import { BlockquoteComponent } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/components/MarkdownViewer/CustomComponents/BlockquoteComponent';
 import {
   CustomComponentMapping as MDVCustomComponentMapping,
   MarkdownViewerProvider,

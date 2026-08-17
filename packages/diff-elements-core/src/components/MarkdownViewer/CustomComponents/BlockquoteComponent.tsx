@@ -1,4 +1,4 @@
-import { CustomComponentMapping } from '@stoplight/diff-elements-core';
+import { CustomComponentMapping } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core';
 import { Box } from '@stoplight/mosaic';
 import React from 'react';
 

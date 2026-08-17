@@ -11,10 +11,10 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "paths": {
-      "@stoplight/elements-core": [
+      "@netcracker/qubership-apihub-apispec-view-elements-core": [
         "../elements-core/dist"
       ],
-      "@stoplight/elements-core/*": [
+      "@netcracker/qubership-apihub-apispec-view-elements-core/*": [
         "../elements-core/dist/*"
       ]
     }

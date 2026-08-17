@@ -1,5 +1,5 @@
 {
-  "name": "@stoplight/elements-core",
+  "name": "@netcracker/qubership-apihub-apispec-view-elements-core",
   "version": "0.0.0",
   "private": "true",
   "sideEffects": [

@@ -1,6 +1,6 @@
-import { useResolvedObject, useSearchPhrase, useOperationExtensions } from '@stoplight/elements-core';
-import { Extensions } from '@stoplight/elements-core/components/Docs/Extensions';
-import { SectionSubtitle } from '@stoplight/elements-core/components/Docs/Sections';
+import { useResolvedObject, useSearchPhrase, useOperationExtensions } from '@netcracker/qubership-apihub-apispec-view-elements-core';
+import { Extensions } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Extensions';
+import { SectionSubtitle } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Sections';
 import { Box, Flex, Heading, HStack, isNotEmptyObject, useThemeIsDark, VStack } from '@stoplight/mosaic';
 import { ErrorBoundaryProps, withErrorBoundary } from '@stoplight/react-error-boundary';
 import { IHttpOperation, IServer } from '@stoplight/types';

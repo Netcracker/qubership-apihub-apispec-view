@@ -3,11 +3,11 @@ import {
   SpecificationVersionPair,
   TestSpecType,
 } from '@netcracker/qubership-apihub-compatibility-suites'
-import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
-import { getCompareResult } from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
-import { stringifyDiffs } from '@stoplight/elements/web-components/__stories__/helpers/stringifyDiffs'
+import { DiffOperationAPI } from '@netcracker/qubership-apihub-apispec-view/containers/DiffOperationAPI'
+import { getCompareResult } from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/getMergedDocument'
+import { stringifyDiffs } from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/stringifyDiffs'
 import { parse } from '@stoplight/yaml'
-import { aggregatedDiffsMetaKey, diffsMetaKey } from 'diff-block'
+import { aggregatedDiffsMetaKey, diffsMetaKey } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import FontFaceObserver from 'fontfaceobserver'
 import React, { useState } from 'react'
 

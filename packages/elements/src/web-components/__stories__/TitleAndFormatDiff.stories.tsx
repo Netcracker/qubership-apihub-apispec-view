@@ -8,7 +8,7 @@ import {
   collectionsActionsArraySchema,
   fieldDoc,
   StoryComponent,
-} from '@stoplight/elements/web-components/__stories__/helpers/titleAndFormatCases'
+} from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/titleAndFormatCases'
 import '../index'
 
 const meta: Meta<{ before: object; after: object }> = {

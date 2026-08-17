@@ -1,9 +1,9 @@
 import { JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer';
-import { Extension, Extensions } from '@stoplight/elements-core/components/Docs/Extensions';
-import { useSearchPhrase, useOperationSchemaOptionsMode } from '@stoplight/elements-core';
+import { Extension, Extensions } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Extensions';
+import { useSearchPhrase, useOperationSchemaOptionsMode } from '@netcracker/qubership-apihub-apispec-view-elements-core';
 import { Box, Flex, IntentVals, Tab, TabList, TabPanel, TabPanels, Tabs, VStack } from '@stoplight/mosaic';
 import { IHttpOperationResponse } from '@stoplight/types';
-import { JsonSchemaViewer as OldJsonSchemaViewer } from 'json-schema-viewer';
+import { JsonSchemaViewer as OldJsonSchemaViewer } from '@netcracker/qubership-apihub-apispec-view-json-schema-viewer';
 import { isEmpty, sortBy, uniqBy } from 'lodash';
 import { nanoid } from 'nanoid';
 import * as React from 'react';

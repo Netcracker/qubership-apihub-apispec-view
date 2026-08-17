@@ -1,4 +1,4 @@
-import { NativeMenuAdapter } from '@stoplight/diff-elements-core/hoc/NativeMenuAdapter';
+import { NativeMenuAdapter } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/hoc/NativeMenuAdapter';
 import { MenuItem } from '@stoplight/mosaic';
 import { useAtom } from 'jotai';
 import * as React from 'react';

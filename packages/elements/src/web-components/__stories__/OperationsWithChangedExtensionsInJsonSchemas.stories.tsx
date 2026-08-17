@@ -1,9 +1,9 @@
-import { COMPARE_DISPLAY_MODE } from '@stoplight/elements'
-import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
+import { COMPARE_DISPLAY_MODE } from '@netcracker/qubership-apihub-apispec-view'
+import { DiffOperationAPI } from '@netcracker/qubership-apihub-apispec-view/containers/DiffOperationAPI'
 import {
   getMergedDocument
-} from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
-import { aggregatedDiffsMetaKey, diffsMetaKey } from 'diff-block'
+} from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/getMergedDocument'
+import { aggregatedDiffsMetaKey, diffsMetaKey } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import React from 'react'
 import '../index'
 

@@ -1,4 +1,4 @@
-import { NativeMenuAdapter } from '@stoplight/diff-elements-core/hoc/NativeMenuAdapter';
+import { NativeMenuAdapter } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/hoc/NativeMenuAdapter';
 import { Box, CopyButton, MenuItems, Panel } from '@stoplight/mosaic';
 import { CodeViewer } from '@stoplight/mosaic-code-viewer';
 import { Request } from 'har-format';

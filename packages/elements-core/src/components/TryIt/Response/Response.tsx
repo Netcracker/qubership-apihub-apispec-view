@@ -1,4 +1,4 @@
-import { NativeMenuAdapter } from '@stoplight/elements-core/hoc/NativeMenuAdapter';
+import { NativeMenuAdapter } from '@netcracker/qubership-apihub-apispec-view-elements-core/hoc/NativeMenuAdapter';
 import { safeParse, safeStringify } from '@stoplight/json';
 import { Box, Flex, Icon, Image, Link, MenuItems, Panel } from '@stoplight/mosaic';
 import { capitalize } from 'lodash';

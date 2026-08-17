@@ -8,7 +8,7 @@ import { DIFF_TYPE_COLOR_MAP, DIFF_TYPE_NAME_MAP } from './constants'
 import { useDiffBlockIdPrefixContext } from './DiffBlockIdPrefixContext';
 import { useDiffContext } from './DiffContext';
 import { diffBlockHeight, diffBlockTop } from './state';
-import { useChangeSeverityFilters } from "@stoplight/elements/containers/ChangeSeverityFiltersContext";
+import { useChangeSeverityFilters } from "@netcracker/qubership-apihub-apispec-view/containers/ChangeSeverityFiltersContext";
 
 // eslint-disable-next-line
 const resetTypeIfExcluded = (

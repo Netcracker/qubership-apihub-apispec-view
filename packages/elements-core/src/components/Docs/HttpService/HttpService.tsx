@@ -1,6 +1,6 @@
-import { Extensions } from '@stoplight/elements-core/components/Docs/Extensions';
-import { useSearchPhrase, useServiceExtensions } from '@stoplight/elements-core';
-import { SectionSubtitle } from '@stoplight/elements-core/components/Docs/Sections';
+import { Extensions } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Extensions';
+import { useSearchPhrase, useServiceExtensions } from '@netcracker/qubership-apihub-apispec-view-elements-core';
+import { SectionSubtitle } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Sections';
 import { Box, Flex, Heading, VStack } from '@stoplight/mosaic';
 import { withErrorBoundary } from '@stoplight/react-error-boundary';
 import { IHttpService } from '@stoplight/types';
