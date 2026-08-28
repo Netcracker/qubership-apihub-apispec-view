@@ -1,4 +1,4 @@
-import { NativeMenuAdapter } from '@netcracker/qubership-apihub-apispec-view-elements-core/hoc/NativeMenuAdapter';
+import { NativeMenuAdapter } from '../../../hoc/NativeMenuAdapter';
 import { Box, MenuActionItem, MenuItems } from '@stoplight/mosaic';
 import * as React from 'react';
 import { useCallback } from 'react';

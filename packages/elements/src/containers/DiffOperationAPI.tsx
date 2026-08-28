@@ -4,7 +4,7 @@ import {
   OperationDisplayModeContext,
   OperationSchemaOptions,
   OperationSchemaOptionsContext,
-} from '@netcracker/qubership-apihub-apispec-view'
+} from '../index'
 import {
   InlineRefResolverProvider,
   NonIdealState,
@@ -24,7 +24,7 @@ import * as React from 'react'
 import { useEffect, useMemo } from 'react'
 
 import { buildOpenApiDiffCause } from '@netcracker/qubership-apihub-api-doc-viewer'
-import { DiffsMetaKeyContext } from '@netcracker/qubership-apihub-apispec-view/containers/DiffsMetaKeyContext'
+import { DiffsMetaKeyContext } from './DiffsMetaKeyContext'
 import { DiffBlock, DiffContainer } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import { APIWithOperation } from '../components/API/APIWithOperation'
 import { useExportDocumentProps } from '../hooks/useExportDocumentProps'

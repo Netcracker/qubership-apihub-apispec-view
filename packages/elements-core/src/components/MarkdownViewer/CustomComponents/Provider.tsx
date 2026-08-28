@@ -1,4 +1,4 @@
-import { BlockquoteComponent } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/MarkdownViewer/CustomComponents/BlockquoteComponent';
+import { BlockquoteComponent } from './BlockquoteComponent';
 import {
   CustomComponentMapping as MDVCustomComponentMapping,
   MarkdownViewerProvider,

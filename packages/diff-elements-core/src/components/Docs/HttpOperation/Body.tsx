@@ -7,7 +7,7 @@ import * as React from 'react'
 import { useCallback, useEffect, useState } from 'react'
 
 import { isDiffRename } from '@netcracker/qubership-apihub-api-diff'
-import { Description } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/components/Docs/HttpOperation/Description'
+import { Description } from './Description'
 import { useAggregatedDiffsMetaKey } from '@netcracker/qubership-apihub-apispec-view/containers/AggregatedDiffsMetaKeyContext'
 import { useChangeSeverityFilters } from '@netcracker/qubership-apihub-apispec-view/containers/ChangeSeverityFiltersContext'
 import { useDiffsMetaKey } from '@netcracker/qubership-apihub-apispec-view/containers/DiffsMetaKeyContext'

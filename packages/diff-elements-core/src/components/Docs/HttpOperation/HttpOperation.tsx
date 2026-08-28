@@ -1,4 +1,4 @@
-import { ExtensionsDiff } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/components/Docs/ExtensionsDiff';
+import { ExtensionsDiff } from '../ExtensionsDiff';
 import { useOperationExtensionsWithDiff } from '@netcracker/qubership-apihub-apispec-view/hooks/useExtensionsDiff';
 import { ExportButtonProps, useDocument } from '@netcracker/qubership-apihub-apispec-view-elements-core';
 import { Box, Flex, HStack, isNotEmptyObject, useThemeIsDark, VStack } from '@stoplight/mosaic';

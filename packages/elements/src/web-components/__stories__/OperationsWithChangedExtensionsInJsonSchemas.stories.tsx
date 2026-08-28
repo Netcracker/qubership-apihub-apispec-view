@@ -1,8 +1,8 @@
-import { COMPARE_DISPLAY_MODE } from '@netcracker/qubership-apihub-apispec-view'
-import { DiffOperationAPI } from '@netcracker/qubership-apihub-apispec-view/containers/DiffOperationAPI'
+import { COMPARE_DISPLAY_MODE } from '../../index'
+import { DiffOperationAPI } from '../../containers/DiffOperationAPI'
 import {
   getMergedDocument
-} from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/getMergedDocument'
+} from './helpers/getMergedDocument'
 import { aggregatedDiffsMetaKey, diffsMetaKey } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import React from 'react'
 import '../index'

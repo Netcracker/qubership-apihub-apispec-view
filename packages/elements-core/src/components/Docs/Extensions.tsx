@@ -1,4 +1,4 @@
-import { MarkdownViewer } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/MarkdownViewer';
+import { MarkdownViewer } from '../MarkdownViewer';
 import { safeStringify } from '@stoplight/json';
 import { Box, Flex, isArray, isObject, Panel } from '@stoplight/mosaic';
 import { useAtom } from 'jotai';

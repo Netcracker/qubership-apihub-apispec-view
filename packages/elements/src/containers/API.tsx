@@ -28,7 +28,7 @@ import { transformOasToServiceNode } from '../utils/oas';
 import {
   OperationSchemaOptions,
   OperationSchemaOptionsContext,
-} from '@netcracker/qubership-apihub-apispec-view/containers/OperationSchemaOptionsContext';
+} from './OperationSchemaOptionsContext';
 
 export type APIProps = APIPropsWithDocument | APIPropsWithUrl;
 

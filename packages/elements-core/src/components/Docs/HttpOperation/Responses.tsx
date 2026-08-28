@@ -1,6 +1,6 @@
 import { JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer';
-import { Extension, Extensions } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/Extensions';
-import { useSearchPhrase, useOperationSchemaOptionsMode } from '@netcracker/qubership-apihub-apispec-view-elements-core';
+import { Extension, Extensions } from '../Extensions';
+import { useSearchPhrase, useOperationSchemaOptionsMode } from '../../../index';
 import { Box, Flex, IntentVals, Tab, TabList, TabPanel, TabPanels, Tabs, VStack } from '@stoplight/mosaic';
 import { IHttpOperationResponse } from '@stoplight/types';
 import { JsonSchemaViewer as OldJsonSchemaViewer } from '@netcracker/qubership-apihub-apispec-view-json-schema-viewer';

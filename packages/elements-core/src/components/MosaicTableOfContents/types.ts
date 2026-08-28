@@ -1,4 +1,4 @@
-import { NodeTypeAsyncOperation } from '@netcracker/qubership-apihub-apispec-view-elements-core/types';
+import { NodeTypeAsyncOperation } from '../../types';
 
 export type TableOfContentsProps = {
   tree: TableOfContentsItem[];

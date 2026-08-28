@@ -1,5 +1,5 @@
 import { createElementClass } from '@netcracker/qubership-apihub-apispec-view-elements-core';
-import { OperationAPI } from '@netcracker/qubership-apihub-apispec-view/containers/OperationAPI';
+import { OperationAPI } from '../containers/OperationAPI';
 
 import fontAwesomeStyles from '!!raw-loader!@fortawesome/fontawesome-svg-core/styles.css';
 import apihubDocViewerStyles from '!!raw-loader!@netcracker/qubership-apihub-api-doc-viewer/dist/style.css';

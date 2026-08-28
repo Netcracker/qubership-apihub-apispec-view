@@ -1,5 +1,5 @@
-import { Extension, ExtensionMeta } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/components/Docs/Extensions';
-import { ExtensionsDiff } from '@netcracker/qubership-apihub-apispec-view-diff-elements-core/components/Docs/ExtensionsDiff';
+import { Extension, ExtensionMeta } from '../Extensions';
+import { ExtensionsDiff } from '../ExtensionsDiff';
 import { VStack } from '@stoplight/mosaic';
 import { HttpSecurityScheme, IHttpOperation } from '@stoplight/types';
 import { DiffBlock, DiffContainer } from '@netcracker/qubership-apihub-apispec-view-diff-block';

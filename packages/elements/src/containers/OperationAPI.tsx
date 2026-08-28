@@ -3,7 +3,7 @@ import {
   OperationDisplayModeContext,
   OperationSchemaOptions,
   OperationSchemaOptionsContext,
-} from '@netcracker/qubership-apihub-apispec-view'
+} from '../index'
 import {
   InlineRefResolverProvider,
   NonIdealState,

@@ -1,6 +1,6 @@
-import { DiffOperationAPI } from '@netcracker/qubership-apihub-apispec-view/containers/DiffOperationAPI'
-import { getCompareResult } from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/getMergedDocument'
-import { stringifyDiffs } from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/stringifyDiffs'
+import { DiffOperationAPI } from '../../../containers/DiffOperationAPI'
+import { getCompareResult } from './getMergedDocument'
+import { stringifyDiffs } from './stringifyDiffs'
 import { aggregatedDiffsMetaKey, diffsMetaKey } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import React from 'react'
 

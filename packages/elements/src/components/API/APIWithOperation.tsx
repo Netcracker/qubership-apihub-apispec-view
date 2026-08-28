@@ -2,7 +2,7 @@ import { HttpOperation as HttpOperationDiff } from '@netcracker/qubership-apihub
 import {
   COMPARE_DISPLAY_MODE,
   useOperationDisplayMode,
-} from '@netcracker/qubership-apihub-apispec-view/containers/OperationDisplayModeContext';
+} from '../../containers/OperationDisplayModeContext';
 import { ExportButtonProps, RoutingProps } from '@netcracker/qubership-apihub-apispec-view-elements-core';
 import { HttpOperation } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/HttpOperation';
 import { IServer } from '@netcracker/qubership-apihub-apispec-view-elements-core/utils/http-spec/IServer';

@@ -24,13 +24,13 @@ import {
 // import renameMediaTypeAndADeeperChangeInResponseHeaderBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/before.yaml'
 // import renameMediaTypeAndADeeperChangeInResponseHeaderAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/after.yaml'
 
-import { COMPARE_DISPLAY_MODE } from '@netcracker/qubership-apihub-apispec-view'
-import { DiffOperationAPI } from '@netcracker/qubership-apihub-apispec-view/containers/DiffOperationAPI'
+import { COMPARE_DISPLAY_MODE } from '../../index'
+import { DiffOperationAPI } from '../../containers/DiffOperationAPI'
 import {
   getCompareResult,
   getMergedDocument,
-} from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/getMergedDocument'
-import { stringifyDiffs } from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/stringifyDiffs'
+} from './helpers/getMergedDocument'
+import { stringifyDiffs } from './helpers/stringifyDiffs'
 import { Meta, StoryObj } from '@storybook/react/*'
 import { aggregatedDiffsMetaKey, diffsMetaKey } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import React from 'react'

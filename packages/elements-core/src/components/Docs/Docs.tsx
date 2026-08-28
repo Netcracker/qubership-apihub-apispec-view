@@ -1,5 +1,5 @@
-import { AsyncOperation } from '@netcracker/qubership-apihub-apispec-view-elements-core/components/Docs/AsyncOperation';
-import { IServer } from '@netcracker/qubership-apihub-apispec-view-elements-core/utils/http-spec/IServer';
+import { AsyncOperation } from './AsyncOperation';
+import { IServer } from '../../utils/http-spec/IServer';
 import { NodeType } from '@stoplight/types';
 import { Location } from 'history';
 import { SchemaViewMode } from '@netcracker/qubership-apihub-apispec-view-json-schema-viewer';
