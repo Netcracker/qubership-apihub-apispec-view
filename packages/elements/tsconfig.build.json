@@ -7,9 +7,8 @@
     "**/__*__/**"
   ],
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "dist",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
       "@netcracker/qubership-apihub-apispec-view-elements-core": [
         "../elements-core/dist"
