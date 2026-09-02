@@ -13,7 +13,7 @@
     "@netcracker/qubership-apihub-api-diff": "bugfix-update-infrastructure",
     "@stoplight/mosaic": "^1.40.0",
     "jotai": "1.6.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   }
