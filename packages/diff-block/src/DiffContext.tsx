@@ -1,4 +1,4 @@
-import React, { FC, memo, useContext, useMemo } from 'react';
+import React, { FC, memo, PropsWithChildren, useContext, useMemo } from 'react';
 import { useChangeSeverityFilters } from "@netcracker/qubership-apihub-apispec-view/containers/ChangeSeverityFiltersContext";
 
 export type DiffSide = 'before' | 'after' | 'undefined';
@@ -16,7 +16,7 @@ const defaultDiffContext = {
 };
 export const useDiffContext = () => useContext(DiffContext) ?? defaultDiffContext;
 
-export const DiffContextProvider: FC<DiffContextType> = memo(
+export const DiffContextProvider: FC<PropsWithChildren<DiffContextType>> = memo(
   value => {
     const { side, containerElement, children } = value;
     const filters = useChangeSeverityFilters()

@@ -21,12 +21,14 @@ const resetTypeIfExcluded = (
   return type;
 };
 
-export const DiffBlock: React.FunctionComponent<{
-  type: DiffType | undefined;
-  action: ActionType | undefined;
-  cause: string | undefined;
-  id: string;
-}> = props => {
+export const DiffBlock: React.FunctionComponent<
+  React.PropsWithChildren<{
+    type: DiffType | undefined;
+    action: ActionType | undefined;
+    cause: string | undefined;
+    id: string;
+  }>
+> = props => {
   const { action, cause, id, children } = props;
   const { side, containerElement } = useDiffContext();
   const filters = useChangeSeverityFilters()

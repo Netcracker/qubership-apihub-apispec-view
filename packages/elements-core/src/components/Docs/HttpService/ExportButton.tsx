@@ -21,7 +21,7 @@ export const ExportButton: React.FC<ExportButtonProps> = ({ original, bundled })
   }, [original, bundled]);
 
   const onChange = useCallback(
-    event => {
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
       (
         menuItems?.find(item => {
           const { id } = item as MenuActionItem;
