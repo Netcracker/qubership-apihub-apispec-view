@@ -98,8 +98,8 @@ const Response = ({ response, onMediaTypeChange, extensions }: ResponseProps) =>
         {extensions && !isEmpty(extensions) && (
           <Box>
             <SectionSubtitle title="Custom properties" id="response-extensions" />
-            {extensions.map(extension => (
-              <Extensions key={nanoid(8)} value={extension} />
+            {extensions.map((extension, index) => (
+              <Extensions key={index} value={extension} />
             ))}
           </Box>
         )}
