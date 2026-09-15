@@ -51,8 +51,12 @@ function ExampleMenu({ examples, requestBody, onChange }: RequestBodyProps) {
   const data = React.useMemo(() => {
     const items: MenuItems = [];
     const mapping = new Map<string, INodeExample | INodeExternalExample>();
-    examples.forEach(example => {
-      const id = `request-example-${example.key}`;
+    examples.forEach((example, index) => {
+      // Example keys are not guaranteed to be unique: http-spec assigns the key
+      // 'default' to the example taken from `example`, which can collide with a
+      // key coming from `examples`. Without the index the second example would
+      // overwrite the first one in `mapping`.
+      const id = `request-example-${index}-${example.key}`;
       items.push({ id, title: example.key });
       mapping.set(id, example);
     });
