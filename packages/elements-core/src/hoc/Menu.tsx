@@ -1,5 +1,7 @@
-import { MenuActionItem, MenuItems } from '@stoplight/mosaic';
+import { MenuItems } from '@stoplight/mosaic';
 import * as React from 'react';
+
+import { isSelectableMenuItem } from './menu-items';
 
 export type MenuProps = {
   title: string;
@@ -23,7 +25,10 @@ export const NativeMenu: React.FC<MenuProps> = React.memo(props => {
         {title}
       </option>
       {menuItems.map((item, index) => {
-        const { id, title } = item as MenuActionItem;
+        if (!isSelectableMenuItem(item)) {
+          return null;
+        }
+        const { id, title } = item;
         return (
           <option key={`${id}-${index}`} value={id}>
             {title}
