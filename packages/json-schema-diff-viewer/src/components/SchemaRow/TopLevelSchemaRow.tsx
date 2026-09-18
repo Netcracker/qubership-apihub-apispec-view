@@ -46,13 +46,13 @@ export const TopLevelSchemaRow = ({ schemaNode }: Pick<SchemaRowProps, 'schemaNo
           spacing={8}
           as={Tabs}
           appearance="pill"
-          selectedId={selectedChoice.title}
-          onChange={(value: string) => setSelectedChoice(choices.find(c => c.title === value)!)}
+          selectedId={String(choices.indexOf(selectedChoice))}
+          onChange={(value: string) => setSelectedChoice(choices[Number(value)])}
         >
           <div className="sl-responses-tab-list">
             <TabList density="compact" fontSize="sm">
               {choices.map((choice, index) => (
-                <Tab key={choice.title} id={choice.title}>
+                <Tab key={index} id={String(index)}>
                   {choice.title}
                 </Tab>
               ))}
@@ -62,7 +62,7 @@ export const TopLevelSchemaRow = ({ schemaNode }: Pick<SchemaRowProps, 'schemaNo
             {choices.map((choice, index) => {
               const nodes = calculateChildrenToShow(choice.type);
               return (
-                <TabPanel key={choice.title} id={choice.title}>
+                <TabPanel key={index} id={String(index)}>
                   <ChildStack schemaNode={schemaNode} childNodes={nodes} currentNestingLevel={nestingLevel} />
                 </TabPanel>
               );

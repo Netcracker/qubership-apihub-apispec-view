@@ -14,14 +14,15 @@ export type ServersDropdownProps = {
 export const ServersDropdown = ({ servers }: ServersDropdownProps) => {
   const [chosenServer, setChosenServer] = useAtom(chosenServerAtom);
 
-  const serverItems: MenuItem[] = servers.map(server => ({
-    id: server.url,
+  // Server urls are not guaranteed to be unique, so the position identifies the item.
+  const serverItems: MenuItem[] = servers.map((server, index) => ({
+    id: String(index),
     title: server.name || server.description,
   })) as MenuItem[];
 
   const onChange = useCallback(
     event => {
-      const server = servers.find(server => server.url === event.target.value);
+      const server = servers[Number(event.target.value)];
       setChosenServer(server);
       event.target.value = 'default';
     },
