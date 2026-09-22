@@ -22,8 +22,11 @@ export const ServersDropdown = ({ servers }: ServersDropdownProps) => {
 
   const onChange = useCallback(
     event => {
-      const server = servers[Number(event.target.value)];
-      setChosenServer(server);
+      const index = Number.parseInt(event.target.value, 10);
+      const server = Number.isInteger(index) ? servers[index] : undefined;
+      if (server !== undefined) {
+        setChosenServer(server);
+      }
       event.target.value = 'default';
     },
     [servers, setChosenServer],
