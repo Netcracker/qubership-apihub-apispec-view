@@ -88,6 +88,8 @@ export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameter
       expandedDepth={defaultSchemaDepth}
       customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
       diffMetaKeys={diffMetaKeys}
+      // TODO: Temporarily disabled, restore once hiding unchanged nodes is supported
+      hideUnchangedNodes={false}
       diffTypes={filters}
     />
   )

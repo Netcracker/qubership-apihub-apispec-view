@@ -128,6 +128,8 @@ export const Body = ({ body, onChange }: DiffBodyProps) => {
         // diffs specific
         diffTypes={filters}
         diffMetaKeys={diffMetaKeys}
+        // TODO: Temporarily disabled, restore once hiding unchanged nodes is supported
+        hideUnchangedNodes={false}
       />
     )
   }, [defaultSchemaDepth, diffsMetaKey, filters, notSplitSchemaViewer, schema, schemaViewMode, wholeContentDiff, aggregatedDiffsMetaKey])

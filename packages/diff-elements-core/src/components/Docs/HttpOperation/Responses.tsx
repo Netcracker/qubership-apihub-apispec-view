@@ -284,6 +284,8 @@ const Response = ({ response, onMediaTypeChange, extensions, extensionsMeta }: R
         // diffs specific
         diffTypes={filters}
         diffMetaKeys={diffMetaKeys}
+        // TODO: Temporarily disabled, restore once hiding unchanged nodes is supported
+        hideUnchangedNodes={false}
       />
     )
   }, [defaultSchemaDepth, diffMetaKeys, filters, notSplitSchemaViewer, schema, schemaViewMode, wholeContentDiff, aggregatedDiffsMetaKey])
