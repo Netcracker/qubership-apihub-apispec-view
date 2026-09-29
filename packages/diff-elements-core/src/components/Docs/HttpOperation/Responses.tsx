@@ -1,4 +1,4 @@
-import { buildOpenApiDiffCause, JsonSchemaDiffViewer, JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer'
+import { buildOpenApiDiffCause, JsonSchemaDiffsViewer, JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer'
 import { mirrorSelfDiffMetaKey } from '@netcracker/qubership-apihub-http-spec/oas3WithMeta'
 import { Extension, ExtensionMeta } from '@stoplight/diff-elements-core/components/Docs/Extensions'
 import { ExtensionsDiff } from '@stoplight/diff-elements-core/components/Docs/ExtensionsDiff'
@@ -17,6 +17,7 @@ import { isObject } from '@stoplight/diff-elements-core/utils/guards'
 import { useAggregatedDiffsMetaKey } from '@stoplight/elements/containers/AggregatedDiffsMetaKeyContext'
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
 import { useDiffsMetaKey } from '@stoplight/elements/containers/DiffsMetaKeyContext'
+import { JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS } from '../../../constants'
 import { SectionSubtitle, SectionTitle } from '../Sections'
 import { Parameters } from './Parameters'
 
@@ -255,23 +256,34 @@ const Response = ({ response, onMediaTypeChange, extensions, extensionsMeta }: R
               schema={schema}
               displayMode={schemaViewMode}
               expandedDepth={defaultSchemaDepth}
-              overriddenKind="parameters"
+              customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
             />
           </DiffBlock>
         </DiffContainer>
       )
     }
 
+    // Whole operation was added/removed, so there is nothing to compare side-by-side
+    if (notSplitSchemaViewer) {
+      return (
+        <JsonSchemaViewer
+          schema={schema}
+          displayMode={schemaViewMode}
+          expandedDepth={defaultSchemaDepth}
+          customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
+        />
+      )
+    }
+
     return (
-      <JsonSchemaDiffViewer
+      <JsonSchemaDiffsViewer
         schema={schema}
         displayMode={schemaViewMode}
         expandedDepth={defaultSchemaDepth}
-        overriddenKind="parameters"
+        customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
         // diffs specific
-        layoutMode={notSplitSchemaViewer ? 'document' : 'side-by-side-diffs'}
-        filters={filters}
-        metaKeys={diffMetaKeys}
+        diffTypes={filters}
+        diffMetaKeys={diffMetaKeys}
       />
     )
   }, [defaultSchemaDepth, diffMetaKeys, filters, notSplitSchemaViewer, schema, schemaViewMode, wholeContentDiff, aggregatedDiffsMetaKey])

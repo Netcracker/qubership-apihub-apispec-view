@@ -22,7 +22,7 @@
     "@chromatic-com/storybook": "1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@netcracker/qubership-apihub-api-diff": "4.0.0",
-    "@netcracker/qubership-apihub-api-doc-viewer": "3.4.1",
+    "@netcracker/qubership-apihub-api-doc-viewer": "feature-json-schema-rework",
     "@netcracker/qubership-apihub-api-unifier": "2.9.2",
     "@netcracker/qubership-apihub-compatibility-suites": "2.6.1",
     "@netcracker/qubership-apihub-http-spec": "5.5.11",

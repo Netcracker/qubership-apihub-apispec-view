@@ -1,4 +1,4 @@
-import { JsonSchemaDiffViewer } from '@netcracker/qubership-apihub-api-doc-viewer'
+import { JsonSchemaDiffsViewer, JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer'
 import { mirrorDiffMetaKey, mirrorSelfDiffMetaKey } from '@netcracker/qubership-apihub-http-spec/oas3WithMeta'
 import { useOperationSchemaOptionsMode } from '@stoplight/elements'
 import { HttpParamStyles, IHttpContent, IHttpParam } from '@stoplight/types'
@@ -12,6 +12,7 @@ import { isObject } from '@stoplight/diff-elements-core/utils/guards'
 import { useAggregatedDiffsMetaKey } from '@stoplight/elements/containers/AggregatedDiffsMetaKeyContext'
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
 import { useDiffsMetaKey } from '@stoplight/elements/containers/DiffsMetaKeyContext'
+import { JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS } from '../../../constants'
 import { isNodeExample } from '../../../utils/http-spec/examples'
 
 type ParameterKey = string
@@ -55,7 +56,8 @@ export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameter
   }), [diffsMetaKey, aggregatedDiffsMetaKey])
 
   // FIXME 18.06.24 // Get rid of "parametersMediaTypes" when future wonderful AMT+ADV are ready!
-  const [schema, parametersMediaTypes] = useMemo(
+  // TODO: Pass parameters media types (2nd tuple item) to JsonSchemaDiffsViewer once it supports them again
+  const [schema] = useMemo(
     () => httpOperationParamsToSchema({ parameters, parameterType }, diffsMetaKey),
     [parameters, parameterType, diffsMetaKey],
   )
@@ -67,16 +69,26 @@ export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameter
     return null
   }
 
+  // Whole operation was added/removed, so there is nothing to compare side-by-side
+  if (notSplitSchemaViewer) {
+    return (
+      <JsonSchemaViewer
+        schema={schema}
+        displayMode={schemaViewMode}
+        expandedDepth={defaultSchemaDepth}
+        customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
+      />
+    )
+  }
+
   return (
-    <JsonSchemaDiffViewer
+    <JsonSchemaDiffsViewer
       schema={schema}
       displayMode={schemaViewMode}
       expandedDepth={defaultSchemaDepth}
-      overriddenKind="parameters"
-      metaKeys={diffMetaKeys}
-      layoutMode={notSplitSchemaViewer ? 'document' : 'side-by-side-diffs'}
-      filters={filters}
-      topLevelPropsMediaTypes={parametersMediaTypes}
+      customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
+      diffMetaKeys={diffMetaKeys}
+      diffTypes={filters}
     />
   )
 }
@@ -185,7 +197,7 @@ const httpOperationParamsToSchema = (
         : deprecatedDiff
     }
 
-    // Here we need to extend `schema.properties` by diff meta if exists to correct work of `JsonSchemaDiffViewer`
+    // Here we need to extend `schema.properties` by diff meta if exists to correct work of `JsonSchemaDiffsViewer`
     if (p[selfDiffMetaKey]) {
       schema.properties![diffMetaKey] = {
         ...schema.properties![diffMetaKey],

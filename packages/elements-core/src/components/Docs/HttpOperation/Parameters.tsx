@@ -6,6 +6,7 @@ import { JsonSchemaViewer as OldJsonSchemaViewer } from 'json-schema-viewer';
 import { isObject, sortBy } from 'lodash';
 import * as React from 'react';
 
+import { JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS } from '../../../constants';
 import { isNodeExample } from '../../../utils/http-spec/examples';
 import {useMemo} from "react";
 
@@ -43,7 +44,8 @@ const defaultStyle = {
 
 export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameters, parameterType }) => {
   // FIXME 18.06.24 // Get rid of "parametersMediaTypes" when future wonderful AMT+ADV are ready!
-  const [schema, parametersMediaTypes] = useMemo(
+  // TODO: Pass parameters media types (2nd tuple item) to JsonSchemaViewer once it supports them again
+  const [schema] = useMemo(
     () => httpOperationParamsToSchema({ parameters, parameterType }),
     [parameters, parameterType],
   );
@@ -63,8 +65,7 @@ export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameter
       schema={schema}
       displayMode={schemaViewMode}
       expandedDepth={defaultSchemaDepth}
-      overriddenKind="parameters"
-      topLevelPropsMediaTypes={parametersMediaTypes}
+      customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
     />
   );
 };
