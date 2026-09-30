@@ -7,7 +7,14 @@ import type { JSONSchema7Object } from 'json-schema'
 import { sortBy } from 'lodash'
 import * as React from 'react'
 import { useMemo } from 'react'
-import { DiffAction, DiffMetaRecord } from '@netcracker/qubership-apihub-api-diff'
+import {
+  Diff,
+  DiffAction,
+  DiffMetaRecord,
+  isDiffAdd,
+  isDiffRemove,
+  isDiffReplace,
+} from '@netcracker/qubership-apihub-api-diff'
 import { isObject } from '@stoplight/diff-elements-core/utils/guards'
 import { useAggregatedDiffsMetaKey } from '@stoplight/elements/containers/AggregatedDiffsMetaKeyContext'
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
@@ -118,6 +125,7 @@ const httpOperationParamsToSchema = (
     required: [] as string[],
   }
   let parametersMediaTypesMap: ParametersMediaTypeMap = undefined
+  const requiredArrayDiffs: DiffMetaRecord = {}
 
   const sortedParams = sortBy(parameters, ['required', 'name'])
 
@@ -156,8 +164,11 @@ const httpOperationParamsToSchema = (
 
     mergeMirrorSymbolsForDiffMeta(p, diffMetaKey)
 
+    // Parameter's own `required` flag diff is moved to the synthetic schema's `required` array
+    // (see `toRequiredArrayItemDiff`), it isn't a diff of the property schema itself
+    const { required: parameterRequiredDiff, ...parameterDiffMeta } = p[diffMetaKey] ?? {}
     const paramPropsDiffMeta = {
-      ...p[diffMetaKey] ?? {},
+      ...parameterDiffMeta,
       ...paramSchema?.[diffMetaKey] ?? {},
     }
 
@@ -207,13 +218,15 @@ const httpOperationParamsToSchema = (
       }
     }
 
-    const requiredChanged = !!schema.properties?.[p.name]?.[diffMetaKey]?.required
-    if (required || requiredChanged) {
+    const requiredDiff = toRequiredArrayItemDiff(parameterRequiredDiff, name)
+    if (required || requiredDiff) {
+      if (requiredDiff) {
+        requiredArrayDiffs[schema.required.length] = requiredDiff
+      }
       schema.required.push(name)
     }
   }
 
-  const requiredArrayDiffs: DiffMetaRecord = rearrangeRequiredDiffs(sortedParams, schema.required, diffMetaKey)
   if (Object.keys(requiredArrayDiffs).length > 0 && isObject(schema.required)) {
     schema.required[diffMetaKey] = requiredArrayDiffs
   }
@@ -221,20 +234,43 @@ const httpOperationParamsToSchema = (
   return [schema, parametersMediaTypesMap]
 }
 
-// TODO 01.08.24 // Remove it later
-function rearrangeRequiredDiffs(
-  parameters: IExtendedHttpParam[],
-  required: string[],
-  diffMetaKey: symbol,
-): DiffMetaRecord {
-  const diffRecord: DiffMetaRecord = {}
-  for (const parameter of parameters) {
-    const parameterDiff = parameter[diffMetaKey]
-    const requiredIndex = required.indexOf(parameter.name)
-    if (requiredIndex !== -1 && parameterDiff) {
-      diffRecord[requiredIndex] = parameterDiff?.required
-      delete parameterDiff?.required
+/**
+ * Converts a parameter's boolean `required` diff into a JSON Schema `required` array item diff,
+ * as `JsonSchemaDiffsViewer` expects: parameter name added to the array (became required) or
+ * removed from it (became optional). A raw boolean diff doesn't fit these semantics, e.g.
+ * `false -> true` is a replace, which the viewer treats as "required on both sides".
+ * Changes without effect (absent <-> `false`) are dropped.
+ */
+function toRequiredArrayItemDiff(diff: Diff | undefined, parameterName: string): Diff | undefined {
+  if (!diff) {
+    return undefined
+  }
+
+  const beforeRequired = (isDiffRemove(diff) || isDiffReplace(diff)) && diff.beforeValue === true
+  const afterRequired = (isDiffAdd(diff) || isDiffReplace(diff)) && diff.afterValue === true
+  if (beforeRequired === afterRequired) {
+    return undefined
+  }
+
+  const { type, scope, customScope, description } = diff
+  if (afterRequired) {
+    return {
+      type,
+      scope,
+      customScope,
+      description,
+      action: DiffAction.add,
+      afterValue: parameterName,
+      afterDeclarationPaths: isDiffAdd(diff) || isDiffReplace(diff) ? diff.afterDeclarationPaths : [],
     }
   }
-  return diffRecord
+  return {
+    type,
+    scope,
+    customScope,
+    description,
+    action: DiffAction.remove,
+    beforeValue: parameterName,
+    beforeDeclarationPaths: isDiffRemove(diff) || isDiffReplace(diff) ? diff.beforeDeclarationPaths : [],
+  }
 }
