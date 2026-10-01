@@ -25,14 +25,13 @@ import {
 // import renameMediaTypeAndADeeperChangeInResponseHeaderAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/after.yaml'
 
 import { COMPARE_DISPLAY_MODE } from '@stoplight/elements'
-import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
 import {
-  getCompareResult,
-  getMergedDocument,
-} from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
-import { stringifyDiffs } from '@stoplight/elements/web-components/__stories__/helpers/stringifyDiffs'
-import { Meta, StoryObj } from '@storybook/react/*'
-import { aggregatedDiffsMetaKey, diffsMetaKey } from 'diff-block'
+  createLegacyDiffOperationStory,
+  legacyDiffStoryArgTypes,
+  LegacyDiffStoryArgs,
+  legacyDiffStoryParameters,
+} from '@stoplight/elements/web-components/__stories__/helpers/legacy-stories-utils'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import '../index'
 
@@ -44,295 +43,257 @@ declare global {
   }
 }
 
-export default {
-  title: 'web-components/DiffOperationAPI',
-  component: DiffOperationAPI,
-  argTypes: {
-    layout: {
-      control: { type: 'inline-radio', options: ['sidebar', 'stacked', 'partial'] },
-      defaultValue: 'sidebar',
-    },
-    router: {
-      control: { type: 'inline-radio', options: ['history', 'memory', 'hash', 'static'] },
-      defaultValue: 'history',
-    },
-    selectedNodeUri: { control: 'text', defaultValue: '/' },
-    searchPhrase: { control: 'text' },
-    schemaViewMode: {
-      control: { type: 'inline-radio', options: ['simple', 'detailed'] },
-      defaultValue: undefined,
-    },
-    filters: {
-      options: ['breaking', 'non-breaking', 'annotation', 'unclassified', 'deprecate'],
-      control: { type: 'inline-check' },
-    },
-    mergedDocument: { type: 'object' },
-  },
+const meta: Meta<LegacyDiffStoryArgs> = {
+  title: 'Legacy tests/DiffOperationAPI',
+  id: 'legacy-tests-diff-operation-api',
+  argTypes: legacyDiffStoryArgTypes,
+  parameters: legacyDiffStoryParameters,
 }
 
-const Template = (props: any) => {
-  return (
-    <DiffOperationAPI
-      {...props}
-      diffsMetaKey={diffsMetaKey}
-      aggregatedDiffsMetaKey={aggregatedDiffsMetaKey}
-      filters={JSON.stringify(props.filters)}
-    />
-  )
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const AddNewPetToPetstoreStory: Story = {
+  name: '[post] Add new pet to Petstore',
+  ...createLegacyDiffOperationStory(
+    AddNewPetToPetstore.BEFORE,
+    AddNewPetToPetstore.AFTER,
+    { componentProps: { displayMode: COMPARE_DISPLAY_MODE } },
+  ),
 }
 
-export const AddNewPetToPetstoreStory: any = Template.bind({})
-AddNewPetToPetstoreStory.args = {
-  mergedDocument: getMergedDocument(AddNewPetToPetstore.BEFORE, AddNewPetToPetstore.AFTER),
-  displayMode: COMPARE_DISPLAY_MODE,
+export const AddNewPetToPetstoreStoryCircular: Story = {
+  name: '[post] Add new pet to Petstore (Circular)',
+  ...createLegacyDiffOperationStory(
+    AddNewPetToPetstoreCircular.BEFORE,
+    AddNewPetToPetstoreCircular.AFTER,
+    { componentProps: { displayMode: COMPARE_DISPLAY_MODE } },
+  ),
 }
-AddNewPetToPetstoreStory.storyName = '[post] Add new pet to Petstore'
-
-export const AddNewPetToPetstoreStoryCircular: any = Template.bind({})
-AddNewPetToPetstoreStoryCircular.args = {
-  mergedDocument: getMergedDocument(AddNewPetToPetstoreCircular.BEFORE, AddNewPetToPetstoreCircular.AFTER),
-  displayMode: COMPARE_DISPLAY_MODE,
-}
-AddNewPetToPetstoreStoryCircular.storyName = '[post] Add new pet to Petstore (Circular)'
 
 // Uncomment when logic for wholly added/removed will be ready
-// export const AddNewPetToPetstoreStoryWhollyAdded: any = Template.bind({});
-// AddNewPetToPetstoreStoryWhollyAdded.args = {
-//   mergedDocument: getMergedDocument(AddNewPetToPetstoreWhollyMoved.BEFORE, AddNewPetToPetstoreWhollyMoved.AFTER),
-//   displayMode: COMPARE_DISPLAY_MODE,
-// };
-// AddNewPetToPetstoreStoryWhollyAdded.storyName = '[post] Add new pet to Petstore (Wholly ADDED)';
+// export const AddNewPetToPetstoreStoryWhollyAdded: Story = {
+//   name: '[post] Add new pet to Petstore (Wholly ADDED)',
+//   ...createLegacyDiffOperationStory(
+//     AddNewPetToPetstoreWhollyMoved.BEFORE,
+//     AddNewPetToPetstoreWhollyMoved.AFTER,
+//     { componentProps: { displayMode: COMPARE_DISPLAY_MODE } },
+//   ),
+// }
 //
-// export const AddNewPetToPetstoreStoryWhollyRemoved: any = Template.bind({});
-// AddNewPetToPetstoreStoryWhollyRemoved.args = {
-//   mergedDocument: getMergedDocument(AddNewPetToPetstoreWhollyMoved.AFTER, AddNewPetToPetstoreWhollyMoved.BEFORE),
-//   displayMode: COMPARE_DISPLAY_MODE,
-// };
-// AddNewPetToPetstoreStoryWhollyRemoved.storyName = '[post] Add new pet to Petstore (Wholly REMOVED)';
+// export const AddNewPetToPetstoreStoryWhollyRemoved: Story = {
+//   name: '[post] Add new pet to Petstore (Wholly REMOVED)',
+//   ...createLegacyDiffOperationStory(
+//     AddNewPetToPetstoreWhollyMoved.AFTER,
+//     AddNewPetToPetstoreWhollyMoved.BEFORE,
+//     { componentProps: { displayMode: COMPARE_DISPLAY_MODE } },
+//   ),
+// }
 
-export const AddNewPetToPetstoreNullablePropStory: any = Template.bind({})
-AddNewPetToPetstoreNullablePropStory.args = {
-  mergedDocument: getMergedDocument(AddNewPetToPetstoreNullableProp.BEFORE, AddNewPetToPetstoreNullableProp.AFTER),
+export const AddNewPetToPetstoreNullablePropStory: Story = {
+  name: '[post] Add new pet to Petstore (Nullable Prop)',
+  ...createLegacyDiffOperationStory(
+    AddNewPetToPetstoreNullableProp.BEFORE,
+    AddNewPetToPetstoreNullableProp.AFTER,
+  ),
 }
-AddNewPetToPetstoreNullablePropStory.storyName = '[post] Add new pet to Petstore (Nullable Prop)'
 
-export const RemoveWholeResponseCode: any = Template.bind({})
-RemoveWholeResponseCode.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveWholeResponseCode: Story = {
+  name: '[Response] Removed whole RESPONSE code',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML,
-    WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON
-  )
+    WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON,
+  ),
 }
-RemoveWholeResponseCode.storyName = '[Response] Removed whole RESPONSE code'
 
-export const RemoveWholeResponseMediaType: any = Template.bind({})
-RemoveWholeResponseMediaType.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveWholeResponseMediaType: Story = {
+  name: '[Response] Removed whole RESPONSE media type',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML_JSON,
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML,
-  )
+  ),
 }
-RemoveWholeResponseMediaType.storyName = '[Response] Removed whole RESPONSE media type'
 
-export const RemoveSchemaFromResponseMediaType: any = Template.bind({})
-RemoveSchemaFromResponseMediaType.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveSchemaFromResponseMediaType: Story = {
+  name: '[Response] Removed schema from RESPONSE media type',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML_JSON,
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML_EMPTY_JSON,
-  )
+  ),
 }
-RemoveSchemaFromResponseMediaType.storyName = '[Response] Removed schema from RESPONSE media type'
 
-export const RemoveResponseHeaders: any = Template.bind({})
-RemoveResponseHeaders.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveResponseHeaders: Story = {
+  name: '[Response] Removed ALL response HEADERS',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_2_HEADERS,
-    WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON
-  )
+    WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON,
+  ),
 }
-RemoveResponseHeaders.storyName = '[Response] Removed ALL response HEADERS'
 
-export const Remove1ResponseHeader: any = Template.bind({})
-Remove1ResponseHeader.args = {
-  mergedDocument: getMergedDocument(
+export const Remove1ResponseHeader: Story = {
+  name: '[Response] Removed 1 response HEADER',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_2_HEADERS,
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_1_HEADER,
-  )
+  ),
 }
-Remove1ResponseHeader.storyName = '[Response] Removed 1 response HEADER'
 
-export const AddResponseHeaders: any = Template.bind({})
-AddResponseHeaders.args = {
-  mergedDocument: getMergedDocument(
+export const AddResponseHeaders: Story = {
+  name: '[Response] Added ALL response HEADERS',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON,
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_2_HEADERS,
-  )
+  ),
 }
-AddResponseHeaders.storyName = '[Response] Added ALL response HEADERS'
 
-export const Add1ResponseHeader: any = Template.bind({})
-Add1ResponseHeader.args = {
-  mergedDocument: getMergedDocument(
+export const Add1ResponseHeader: Story = {
+  name: '[Response] Added 1 response HEADER',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_1_HEADER,
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_2_HEADERS,
-  )
+  ),
 }
-Add1ResponseHeader.storyName = '[Response] Added 1 response HEADER'
 
-export const RemoveWholeRequestBody: any = Template.bind({})
-RemoveWholeRequestBody.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveWholeRequestBody: Story = {
+  name: '[Request] Removed whole REQUEST BODY',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
-    WhollyChangedRequestBodyOrResponse.EMPTY_OPERATION
-  )
+    WhollyChangedRequestBodyOrResponse.EMPTY_OPERATION,
+  ),
 }
-RemoveWholeRequestBody.storyName = '[Request] Removed whole REQUEST BODY'
 
-export const AddWholeRequestBody: any = Template.bind({})
-AddWholeRequestBody.args = {
-  mergedDocument: getMergedDocument(
+export const AddWholeRequestBody: Story = {
+  name: '[Request] Added whole REQUEST BODY',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.EMPTY_OPERATION,
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
-  )
+  ),
 }
-AddWholeRequestBody.storyName = '[Request] Added whole REQUEST BODY'
 
-export const RemoveWholeRequestBodyMediaType: any = Template.bind({})
-RemoveWholeRequestBodyMediaType.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveWholeRequestBodyMediaType: Story = {
+  name: '[Request] Removed whole REQUEST BODY media type',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_XML,
-  )
+  ),
 }
-RemoveWholeRequestBodyMediaType.storyName = '[Request] Removed whole REQUEST BODY media type'
 
-export const AddWholeRequestBodyMediaType: any = Template.bind({})
-AddWholeRequestBodyMediaType.args = {
-  mergedDocument: getMergedDocument(
+export const AddWholeRequestBodyMediaType: Story = {
+  name: '[Request] Added whole REQUEST BODY media type',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_XML,
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
-  )
+  ),
 }
-AddWholeRequestBodyMediaType.storyName = '[Request] Added whole REQUEST BODY media type'
 
-export const RemoveSchemaFromRequestBodyMediaType: any = Template.bind({})
-RemoveSchemaFromRequestBodyMediaType.args = {
-  mergedDocument: getMergedDocument(
+export const RemoveSchemaFromRequestBodyMediaType: Story = {
+  name: '[Request] Removed schema from REQUEST BODY media type',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_XML_EMPTY_JSON,
-  )
+  ),
 }
-RemoveSchemaFromRequestBodyMediaType.storyName = '[Request] Removed schema from REQUEST BODY media type'
 
-export const Removed1RequestHeader: any = Template.bind({})
-Removed1RequestHeader.args = {
-  mergedDocument: getMergedDocument(
+export const Removed1RequestHeader: Story = {
+  name: '[Request] Removed 1 request HEADER',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_3_HEADERS_RESPONSE_200_JSON_RESPONSE_HEADERS,
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_2_HEADERS_RESPONSE_200_JSON_RESPONSE_HEADERS,
-  )
+  ),
 }
-Removed1RequestHeader.storyName = '[Request] Removed 1 request HEADER'
 
-export const Added1RequestHeader: any = Template.bind({})
-Added1RequestHeader.args = {
-  mergedDocument: getMergedDocument(
+export const Added1RequestHeader: Story = {
+  name: '[Request] Added 1 request HEADER',
+  ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_2_HEADERS_RESPONSE_200_JSON_RESPONSE_HEADERS,
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_3_HEADERS_RESPONSE_200_JSON_RESPONSE_HEADERS,
-  )
+  ),
 }
-Added1RequestHeader.storyName = '[Request] Added 1 request HEADER'
 
-export const DeprecatedOperation: any = Template.bind({})
-DeprecatedOperation.args = {
-  mergedDocument: getMergedDocument(
+export const DeprecatedOperation: Story = {
+  name: '[Operation] NOT deprecated -> Deprecated',
+  ...createLegacyDiffOperationStory(
     DeprecatedOperations.WITHOUT_DEPRECATION,
     DeprecatedOperations.WITH_DEPRECATION,
-  )
+  ),
 }
-DeprecatedOperation.storyName = '[Operation] NOT deprecated -> Deprecated'
 
-export const UnDeprecatedOperation: any = Template.bind({})
-UnDeprecatedOperation.args = {
-  mergedDocument: getMergedDocument(
+export const UnDeprecatedOperation: Story = {
+  name: '[Operation] Deprecated -> NOT deprecated',
+  ...createLegacyDiffOperationStory(
     DeprecatedOperations.WITH_DEPRECATION,
     DeprecatedOperations.WITHOUT_DEPRECATION,
-  )
+  ),
 }
-UnDeprecatedOperation.storyName = '[Operation] Deprecated -> NOT deprecated'
 
-export const ChangedParametersRequiredStory: any = Template.bind({})
-ChangedParametersRequiredStory.args = {
-  mergedDocument: getMergedDocument(
+export const ChangedParametersRequiredStory: Story = {
+  name: '[Operation] Changed "required" flags in parameters',
+  ...createLegacyDiffOperationStory(
     ChangedParametersRequired.BEFORE,
     ChangedParametersRequired.AFTER,
-  )
+  ),
 }
-ChangedParametersRequiredStory.storyName = '[Operation] Changed "required" flags in parameters'
 
-export const ChangedParametersDeprecatedStory: any = Template.bind({})
-ChangedParametersDeprecatedStory.args = {
-  mergedDocument: getMergedDocument(
+export const ChangedParametersDeprecatedStory: Story = {
+  name: '[Operation] Changed "deprecated" flags in parameters',
+  ...createLegacyDiffOperationStory(
     ChangedParametersDeprecated.BEFORE,
     ChangedParametersDeprecated.AFTER,
-  )
+  ),
 }
-ChangedParametersDeprecatedStory.storyName = '[Operation] Changed "deprecated" flags in parameters'
 
-export const RequestBodyNoAdditionalPropertiesNotChanged: any = Template.bind({})
-RequestBodyNoAdditionalPropertiesNotChanged.args = {
-  mergedDocument: getMergedDocument(
-    {
-      openapi: '3.0.2',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      prop1: { type: 'string' },
-                      prop2: { type: 'string' },
-                    },
-                    additionalProperties: false
-                  }
+export const RequestBodyNoAdditionalPropertiesNotChanged: Story = createLegacyDiffOperationStory(
+  {
+    openapi: '3.0.2',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    prop1: { type: 'string' },
+                    prop2: { type: 'string' },
+                  },
+                  additionalProperties: false
                 }
               }
             }
           }
         }
       }
-    },
-    {
-      openapi: '3.0.2',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      prop1: { type: 'string' },
-                      prop2: { type: 'string' },
-                    },
-                    additionalProperties: false
-                  }
+    }
+  },
+  {
+    openapi: '3.0.2',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    prop1: { type: 'string' },
+                    prop2: { type: 'string' },
+                  },
+                  additionalProperties: false
                 }
               }
             }
           }
         }
       }
-    },
-  )
-}
+    }
+  },
+)
 
-export const OneOfChanges: any = Template.bind({})
-OneOfChanges.args = {
-  mergedDocument: getMergedDocument(
+export const OneOfChanges: Story = {
+  name: '[oneOf] Changes in oneOf',
+  ...createLegacyDiffOperationStory(
     {
       openapi: '3.0.0',
       paths: {
@@ -513,10 +474,9 @@ OneOfChanges.args = {
           }
         }
       }
-    }
-  )
+    },
+  ),
 }
-OneOfChanges.storyName = '[oneOf] Changes in oneOf'
 
 const KEEP_PROPS_INTEGER_TYPE = {
   type: 'integer',
@@ -533,85 +493,79 @@ const KEEP_PROPS_STRING_TYPE = {
   pattern: '^a-zA-Z$'
 }
 
-export const IntegerToString: any = Template.bind({})
-IntegerToString.args = {
-  mergedDocument: getMergedDocument(
-    {
-      openapi: '3.0.0',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: KEEP_PROPS_INTEGER_TYPE
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      openapi: '3.0.0',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: KEEP_PROPS_STRING_TYPE
-                }
+export const IntegerToString: Story = createLegacyDiffOperationStory(
+  {
+    openapi: '3.0.0',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: KEEP_PROPS_INTEGER_TYPE
               }
             }
           }
         }
       }
     }
-  )
-}
-
-export const StringToInteger: any = Template.bind({})
-StringToInteger.args = {
-  mergedDocument: getMergedDocument(
-    {
-      openapi: '3.0.0',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: KEEP_PROPS_STRING_TYPE
-                }
+  },
+  {
+    openapi: '3.0.0',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: KEEP_PROPS_STRING_TYPE
               }
             }
           }
         }
       }
-    },
-    {
-      openapi: '3.0.0',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: KEEP_PROPS_INTEGER_TYPE
-                }
+    }
+  },
+)
+
+export const StringToInteger: Story = createLegacyDiffOperationStory(
+  {
+    openapi: '3.0.0',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: KEEP_PROPS_STRING_TYPE
               }
             }
           }
         }
       }
-    },
-  )
-}
+    }
+  },
+  {
+    openapi: '3.0.0',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: KEEP_PROPS_INTEGER_TYPE
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+)
 
-export const ChangePathParamName: any = Template.bind({})
-ChangePathParamName.args = {
-  mergedDocument: getMergedDocument(
+export const ChangePathParamName: Story = {
+  name: '[path] Changed path param name',
+  ...createLegacyDiffOperationStory(
     {
       openapi: '3.0.0',
       paths: {
@@ -653,55 +607,48 @@ ChangePathParamName.args = {
           }
         }
       }
-    }
-  )
-}
-ChangePathParamName.storyName = '[path] Changed path param name'
-
-function StoryComponent({ before, after }: { before: object, after: object }) {
-  const { diffs, merged } = getCompareResult(before, after)
-  console.log(stringifyDiffs(diffs))
-  console.log(diffs)
-  return (
-    <DiffOperationAPI
-      mergedDocument={merged}
-      filters={[]}
-      diffsMetaKey={diffsMetaKey}
-      aggregatedDiffsMetaKey={aggregatedDiffsMetaKey}
-    />
-  )
+    },
+  ),
 }
 
-const meta: Meta<{ before: object, after: object }> = {
-  title: 'web-components/DiffOperationAPI',
-}
-
-type Story = StoryObj<typeof meta>
+const EMPTY_FILTERS = { filters: [] }
 
 export const RenameMediaTypeAndADeeperChangeInResponse: Story = {
   name: '[Response] Rename media type and a deeper change in response',
-  render: StoryComponent,
-  args: { before: renameMediaTypeAndADeeperChangeInResponseBefore, after: renameMediaTypeAndADeeperChangeInResponseAfter },
+  ...createLegacyDiffOperationStory(
+    renameMediaTypeAndADeeperChangeInResponseBefore,
+    renameMediaTypeAndADeeperChangeInResponseAfter,
+    { componentProps: EMPTY_FILTERS },
+  ),
 }
 
 // todo should be shown
 export const RenameMediaTypeInResponse: Story = {
   name: '[Response] Rename media type in response',
-  render: StoryComponent,
-  args: { before: renameMediaTypeInResponseBefore, after: renameMediaTypeInResponseAfter },
+  ...createLegacyDiffOperationStory(
+    renameMediaTypeInResponseBefore,
+    renameMediaTypeInResponseAfter,
+    { componentProps: EMPTY_FILTERS },
+  ),
 }
 
 export const RenameMediaTypeAndADeeperChangeInRequestBody: Story = {
   name: '[Request] Rename media type and a deeper change in request body',
-  render: StoryComponent,
-  args: { before: renameMediaTypeAndADeeperChangeInRequestBodyBefore, after: renameMediaTypeAndADeeperChangeInRequestBodyAfter },
+  ...createLegacyDiffOperationStory(
+    renameMediaTypeAndADeeperChangeInRequestBodyBefore,
+    renameMediaTypeAndADeeperChangeInRequestBodyAfter,
+    { componentProps: EMPTY_FILTERS },
+  ),
 }
 
 // todo should be shown
 export const RenameMediaTypeInRequestBody: Story = {
   name: '[Request] Rename media type in request body',
-  render: StoryComponent,
-  args: { before: renameMediaTypeInRequestBodyBefore, after: renameMediaTypeInRequestBodyAfter },
+  ...createLegacyDiffOperationStory(
+    renameMediaTypeInRequestBodyBefore,
+    renameMediaTypeInRequestBodyAfter,
+    { componentProps: EMPTY_FILTERS },
+  ),
 }
 
 const beforeBugCrashInfiniteAdditionalPropsInDiffs = {
@@ -755,6 +702,9 @@ const afterBugCrashInfiniteAdditionalPropsInDiffs = {
 // Root cause: incorrect behavior of "isDiffMetaRecord" which produces infinite loop in "combineDiffMetas"
 export const BugCrashInfiniteAdditionalPropsInDiffs: Story = {
   name: '[Bug] Crash Infinite Additional Props In Diffs',
-  render: StoryComponent,
-  args: { before: beforeBugCrashInfiniteAdditionalPropsInDiffs, after: afterBugCrashInfiniteAdditionalPropsInDiffs },
+  ...createLegacyDiffOperationStory(
+    beforeBugCrashInfiniteAdditionalPropsInDiffs,
+    afterBugCrashInfiniteAdditionalPropsInDiffs,
+    { componentProps: EMPTY_FILTERS },
+  ),
 }
