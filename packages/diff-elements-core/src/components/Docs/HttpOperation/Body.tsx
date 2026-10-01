@@ -12,6 +12,7 @@ import { useAggregatedDiffsMetaKey } from '@stoplight/elements/containers/Aggreg
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
 import { useDiffsMetaKey } from '@stoplight/elements/containers/DiffsMetaKeyContext'
 import { SectionSubtitle } from '../Sections'
+import { DIFF_ACTION_ATTRIBUTE, resolveMediaTypeDiffAction } from './diffActionMarkers'
 
 export type DiffBodyProps = {
   body: IHttpOperationRequestBody;
@@ -133,6 +134,7 @@ export const Body = ({ body, onChange }: DiffBodyProps) => {
               <Flex flex={1} justify="end">
                 <select
                   aria-label="Request Body Content Type"
+                  data-testid="request-body-media-type-select"
                   value={String(chosenContent)}
                   style={{ background: 'white' }}
                   onChange={event => {
@@ -142,7 +144,12 @@ export const Body = ({ body, onChange }: DiffBodyProps) => {
                   className="sl-menu-adapter"
                 >
                   {contents.map((content, index) => (
-                    <option key={index} value={index} style={{ background: 'white' }}>
+                    <option
+                      key={index}
+                      value={index}
+                      style={{ background: 'white' }}
+                      {...{ [DIFF_ACTION_ATTRIBUTE]: resolveMediaTypeDiffAction(content, diffsMetaKey) }}
+                    >
                       {content.mediaType}
                     </option>
                   ))}

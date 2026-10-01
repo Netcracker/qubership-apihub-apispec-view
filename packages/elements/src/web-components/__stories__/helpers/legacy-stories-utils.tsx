@@ -1,6 +1,7 @@
 import { DiffOperationAPI } from '@stoplight/elements/containers/DiffOperationAPI'
 import { OperationAPIImpl } from '@stoplight/elements/containers/OperationAPI'
 import { getMergedDocument } from '@stoplight/elements/web-components/__stories__/helpers/getMergedDocument'
+import { switchToChangedSections } from '@stoplight/elements/web-components/__stories__/helpers/switch-to-changed-sections'
 import { safeStringify } from '@stoplight/yaml'
 import type { ArgTypes, StoryObj } from '@storybook/react'
 import { aggregatedDiffsMetaKey, diffsMetaKey } from 'diff-block'
@@ -9,6 +10,8 @@ import React, { useEffect, useMemo, useState } from 'react'
 
 const FONT_FAMILIES: string[] = ['Inter']
 const FONT_LOAD_TIMEOUT = 10_000
+// Root of the rendered operation view, the same element screenshot tests capture
+const OPERATION_VIEW_SELECTOR = '[id^="mosaic-provider-react-aria"]'
 
 /** Arbitrary extra props forwarded to the rendered component, hidden from the Controls panel. */
 type ComponentProps = Record<string, unknown>
@@ -101,9 +104,26 @@ function LegacyOperationStory({ sample, componentProps }: { sample: object; comp
   return <OperationAPIImpl mergedDocument={mergedDocument} {...componentProps} />
 }
 
+/** Waits until the operation view is rendered (stories render nothing until fonts are loaded). */
+function waitForOperationView(canvasElement: HTMLElement): Promise<void> {
+  return new Promise(resolve => {
+    const startedAt = Date.now()
+    const check = () => {
+      if (canvasElement.querySelector(OPERATION_VIEW_SELECTOR) || Date.now() - startedAt > FONT_LOAD_TIMEOUT) {
+        resolve()
+      } else {
+        setTimeout(check, 50)
+      }
+    }
+    check()
+  })
+}
+
 /**
  * Story comparing `before` and `after` documents with `DiffOperationAPI`. The documents are shown
  * as read-only YAML in Controls; `componentProps` are passed to the component and not shown.
+ * On mount, the story switches to the response code / media type with the major change (see
+ * `switchToChangedSections`). Screenshot tests call `switchToChangedSections` on their own.
  * Set the story `name` next to the spread result: Storybook reads it statically from the story object.
  */
 export const createLegacyDiffOperationStory = (
@@ -113,6 +133,10 @@ export const createLegacyDiffOperationStory = (
 ): StoryObj<LegacyDiffStoryArgs> => ({
   args: { beforeYaml: toSampleYaml(before), afterYaml: toSampleYaml(after) },
   render: () => <LegacyDiffOperationStory before={before} after={after} componentProps={options.componentProps ?? {}} />,
+  play: async ({ canvasElement }) => {
+    await waitForOperationView(canvasElement)
+    await switchToChangedSections(canvasElement)
+  },
 })
 
 /**

@@ -18,6 +18,7 @@ import { useAggregatedDiffsMetaKey } from '@stoplight/elements/containers/Aggreg
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
 import { useDiffsMetaKey } from '@stoplight/elements/containers/DiffsMetaKeyContext'
 import { SectionSubtitle, SectionTitle } from '../Sections'
+import { DIFF_ACTION_ATTRIBUTE, resolveMediaTypeDiffAction } from './diffActionMarkers'
 import { Parameters } from './Parameters'
 
 interface ResponseCodeItemProps {
@@ -168,7 +169,7 @@ const ACTION_COLORS: Record<'add' | 'remove', string> = {
 
 const ResponseCodeItem = ({ response, action }: ResponseCodeItemProps) => {
   return (
-    <Box>
+    <Box data-testid={`response-code-${response.code}`} {...{ [DIFF_ACTION_ATTRIBUTE]: action }}>
       {response.code}
       {action && (
         <div
@@ -311,6 +312,7 @@ const Response = ({ response, onMediaTypeChange, extensions, extensionsMeta }: R
               <Flex pos="relative" flex={1} justify="end">
                 <select
                   aria-label="Response Body Content Type"
+                  data-testid="response-body-media-type-select"
                   value={String(chosenContent)}
                   onChange={e => {
                     setWholeContentDiff(undefined)
@@ -320,7 +322,11 @@ const Response = ({ response, onMediaTypeChange, extensions, extensionsMeta }: R
                   style={{ backgroundColor: 'white' }}
                 >
                   {contents.map((content, index) => (
-                    <option key={index} value={index}>
+                    <option
+                      key={index}
+                      value={index}
+                      {...{ [DIFF_ACTION_ATTRIBUTE]: resolveMediaTypeDiffAction(content, diffsMetaKey) }}
+                    >
                       {content.mediaType}
                     </option>
                   ))}
