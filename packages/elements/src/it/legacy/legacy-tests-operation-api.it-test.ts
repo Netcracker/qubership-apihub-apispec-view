@@ -14,50 +14,50 @@ describe('Legacy tests', () => {
       await jestPuppeteer.resetPage()
     })
 
-    it('simple-operation', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--simple-operation')
+    it('case-1', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-1')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('simple-operation-simple-mode', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--simple-operation-simple-mode')
+    it('case-2', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-2')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('api-auth-local-before', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--api-auth-local-before')
+    it('case-3', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-3')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('api-auth-local-after', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--api-auth-local-after')
+    it('case-4', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-4')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('operation-without-heading', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--operation-without-heading')
+    it('case-5', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-5')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('spec-with-complex-refs', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--spec-with-complex-refs')
+    it('case-6', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-6')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('operation-with-parameters-one-schema-another-content', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--operation-with-parameters-one-schema-another-content')
+    it('case-7', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-7')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('request-body-no-additional-properties', async () => {
-      story = await storyPage(page, 'legacy-tests-operation-api--request-body-no-additional-properties')
+    it('case-8', async () => {
+      story = await storyPage(page, 'legacy-tests-operation-api--case-8')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
