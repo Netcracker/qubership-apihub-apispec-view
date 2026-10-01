@@ -15,6 +15,8 @@
     "screenshot-test:ci-legacy": "npm run screenshot-test:ci-legacy -w packages/elements",
     "regenerate-screenshots": "npm run regenerate-screenshots -w packages/elements",
     "regenerate-screenshots:ci-legacy": "npm run regenerate-screenshots:ci-legacy -w packages/elements",
+    "screenshot-test-single-suite": "npm run screenshot-test-single-suite -w packages/elements --",
+    "regenerate-screenshots-single-suite": "npm run regenerate-screenshots-single-suite -w packages/elements --",
     "update-lock-file": "update-lock-file @netcracker"
   },
   "devDependencies": {
