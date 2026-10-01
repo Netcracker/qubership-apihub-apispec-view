@@ -14,188 +14,188 @@ describe('Legacy tests', () => {
       await jestPuppeteer.resetPage()
     })
 
-    it('add-new-pet-to-petstore-story', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-new-pet-to-petstore-story')
+    it('case-1', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-1')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('add-new-pet-to-petstore-story-circular', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-new-pet-to-petstore-story-circular')
+    it('case-2', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-2')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('add-new-pet-to-petstore-nullable-prop-story', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-new-pet-to-petstore-nullable-prop-story')
+    it('case-3', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-3')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-whole-response-code', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-whole-response-code')
+    it('case-4', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-4')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-whole-response-media-type', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-whole-response-media-type')
+    it('case-5', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-5')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-schema-from-response-media-type', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-schema-from-response-media-type')
+    it('case-6', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-6')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-response-headers', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-response-headers')
+    it('case-7', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-7')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-1-response-header', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-1-response-header')
+    it('case-8', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-8')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('add-response-headers', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-response-headers')
+    it('case-9', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-9')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('add-1-response-header', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-1-response-header')
+    it('case-10', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-10')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-whole-request-body', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-whole-request-body')
+    it('case-11', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-11')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('add-whole-request-body', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-whole-request-body')
+    it('case-12', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-12')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-whole-request-body-media-type', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-whole-request-body-media-type')
+    it('case-13', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-13')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('add-whole-request-body-media-type', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--add-whole-request-body-media-type')
+    it('case-14', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-14')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('remove-schema-from-request-body-media-type', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--remove-schema-from-request-body-media-type')
+    it('case-15', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-15')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('removed-1-request-header', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--removed-1-request-header')
+    it('case-16', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-16')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('added-1-request-header', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--added-1-request-header')
+    it('case-17', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-17')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('deprecated-operation', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--deprecated-operation')
+    it('case-18', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-18')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('un-deprecated-operation', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--un-deprecated-operation')
+    it('case-19', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-19')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('changed-parameters-required-story', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--changed-parameters-required-story')
+    it('case-20', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-20')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('changed-parameters-deprecated-story', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--changed-parameters-deprecated-story')
+    it('case-21', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-21')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('request-body-no-additional-properties-not-changed', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--request-body-no-additional-properties-not-changed')
+    it('case-22', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-22')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('one-of-changes', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--one-of-changes')
+    it('case-23', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-23')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('integer-to-string', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--integer-to-string')
+    it('case-24', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-24')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('string-to-integer', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--string-to-integer')
+    it('case-25', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-25')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('change-path-param-name', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--change-path-param-name')
+    it('case-26', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-26')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('rename-media-type-and-a-deeper-change-in-response', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--rename-media-type-and-a-deeper-change-in-response')
+    it('case-27', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-27')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('rename-media-type-in-response', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--rename-media-type-in-response')
+    it('case-28', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-28')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('rename-media-type-and-a-deeper-change-in-request-body', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--rename-media-type-and-a-deeper-change-in-request-body')
+    it('case-29', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-29')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('rename-media-type-in-request-body', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--rename-media-type-in-request-body')
+    it('case-30', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-30')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })
 
-    it('bug-crash-infinite-additional-props-in-diffs', async () => {
-      story = await storyPage(page, 'legacy-tests-diff-operation-api--bug-crash-infinite-additional-props-in-diffs')
+    it('case-31', async () => {
+      story = await storyPage(page, 'legacy-tests-diff-operation-api--case-31')
       component = await story.viewComponent()
       expect(await component.captureScreenshot()).toMatchImageSnapshot()
     })

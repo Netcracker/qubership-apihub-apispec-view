@@ -28,18 +28,18 @@ const meta: Meta<LegacyStoryArgs> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const SimpleOperation: Story = {
-  name: 'Simple Operation',
+export const case1: Story = {
+  name: '[GET /pets/{id}/**] Operation with path param, security and request body',
   ...createLegacyOperationStory(simpleOperation),
 };
 
-export const SimpleOperationSimpleMode: Story = {
-  name: 'Simple Operation (Simple Mode)',
+export const case2: Story = {
+  name: '[GET /pets/{id}/**] Same, schema view mode "simple"',
   ...createLegacyOperationStory(simpleOperation, { componentProps: { schemaViewMode: 'simple' } }),
 };
 
-export const ApiAuthLocalBefore: Story = {
-  name: 'Api Auth Local Before',
+export const case3: Story = {
+  name: '[POST /auth/local_added] Header params, custom proxy server, examples hidden',
   ...createLegacyOperationStory(apiAuthLocalBefore, {
     componentProps: {
       proxyServer: JSON.stringify({ url: 'test-proxy-url', description: 'Custom url' }),
@@ -48,23 +48,23 @@ export const ApiAuthLocalBefore: Story = {
   }),
 };
 
-export const ApiAuthLocalAfter: Story = {
-  name: 'Api Auth Local After',
+export const case4: Story = {
+  name: '[POST /auth/local] Header params, default settings',
   ...createLegacyOperationStory(apiAuthLocalAfter),
 };
 
-export const OperationWithoutHeading: Story = {
-  name: 'Operation without Heading',
+export const case5: Story = {
+  name: '[GET /pets/{id}/**] Operation without heading',
   ...createLegacyOperationStory(simpleOperation, { componentProps: { noHeading: true } }),
 };
 
-export const SpecWithComplexRefs: Story = {
-  name: 'Spec with Complex Refs',
+export const case6: Story = {
+  name: '[GET /foo] Request body and response via chained $refs, without heading',
   ...createLegacyOperationStory(specWithComplexRefs, { componentProps: { noHeading: true } }),
 };
 
-export const OperationWithParametersOneSchemaAnotherContent: Story = {
-  name: 'Operation with 2 params. 1st with schema, 2nd with content',
+export const case7: Story = {
+  name: '[POST /test] Query params: one with schema, one with content',
   ...createLegacyOperationStory({
     openapi: '3.0.2',
     paths: {
@@ -100,26 +100,29 @@ export const OperationWithParametersOneSchemaAnotherContent: Story = {
   }),
 };
 
-export const RequestBodyNoAdditionalProperties: Story = createLegacyOperationStory({
-  openapi: '3.0.2',
-  paths: {
-    '/test': {
-      post: {
-        requestBody: {
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  prop1: { type: 'string' },
-                  prop2: { type: 'string' },
+export const case8: Story = {
+  name: '[POST /test] Request body with additionalProperties: false',
+  ...createLegacyOperationStory({
+    openapi: '3.0.2',
+    paths: {
+      '/test': {
+        post: {
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    prop1: { type: 'string' },
+                    prop2: { type: 'string' },
+                  },
+                  additionalProperties: false,
                 },
-                additionalProperties: false,
               },
             },
           },
         },
       },
     },
-  },
-});
+  }),
+};

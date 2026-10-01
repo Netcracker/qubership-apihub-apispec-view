@@ -53,8 +53,8 @@ const meta: Meta<LegacyDiffStoryArgs> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const AddNewPetToPetstoreStory: Story = {
-  name: '[post] Add new pet to Petstore',
+export const case1: Story = {
+  name: '[POST /pet] Multiple changes in operation, request body, responses and schema',
   ...createLegacyDiffOperationStory(
     AddNewPetToPetstore.BEFORE,
     AddNewPetToPetstore.AFTER,
@@ -62,8 +62,8 @@ export const AddNewPetToPetstoreStory: Story = {
   ),
 }
 
-export const AddNewPetToPetstoreStoryCircular: Story = {
-  name: '[post] Add new pet to Petstore (Circular)',
+export const case2: Story = {
+  name: '[POST /pet] Added circular (self-referencing) property to schema',
   ...createLegacyDiffOperationStory(
     AddNewPetToPetstoreCircular.BEFORE,
     AddNewPetToPetstoreCircular.AFTER,
@@ -72,8 +72,8 @@ export const AddNewPetToPetstoreStoryCircular: Story = {
 }
 
 // Uncomment when logic for wholly added/removed will be ready
-// export const AddNewPetToPetstoreStoryWhollyAdded: Story = {
-//   name: '[post] Add new pet to Petstore (Wholly ADDED)',
+// export const case32: Story = {
+//   name: '[POST /pet] Added whole operation',
 //   ...createLegacyDiffOperationStory(
 //     AddNewPetToPetstoreWhollyMoved.BEFORE,
 //     AddNewPetToPetstoreWhollyMoved.AFTER,
@@ -81,8 +81,8 @@ export const AddNewPetToPetstoreStoryCircular: Story = {
 //   ),
 // }
 //
-// export const AddNewPetToPetstoreStoryWhollyRemoved: Story = {
-//   name: '[post] Add new pet to Petstore (Wholly REMOVED)',
+// export const case33: Story = {
+//   name: '[POST /pet] Removed whole operation',
 //   ...createLegacyDiffOperationStory(
 //     AddNewPetToPetstoreWhollyMoved.AFTER,
 //     AddNewPetToPetstoreWhollyMoved.BEFORE,
@@ -90,15 +90,15 @@ export const AddNewPetToPetstoreStoryCircular: Story = {
 //   ),
 // }
 
-export const AddNewPetToPetstoreNullablePropStory: Story = {
-  name: '[post] Add new pet to Petstore (Nullable Prop)',
+export const case3: Story = {
+  name: '[POST /pet] Added nullable object property (nullable in allOf) to schema',
   ...createLegacyDiffOperationStory(
     AddNewPetToPetstoreNullableProp.BEFORE,
     AddNewPetToPetstoreNullableProp.AFTER,
   ),
 }
 
-export const RemoveWholeResponseCode: Story = {
+export const case4: Story = {
   name: '[Response] Removed whole RESPONSE code',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML,
@@ -106,7 +106,7 @@ export const RemoveWholeResponseCode: Story = {
   ),
 }
 
-export const RemoveWholeResponseMediaType: Story = {
+export const case5: Story = {
   name: '[Response] Removed whole RESPONSE media type',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML_JSON,
@@ -114,7 +114,7 @@ export const RemoveWholeResponseMediaType: Story = {
   ),
 }
 
-export const RemoveSchemaFromResponseMediaType: Story = {
+export const case6: Story = {
   name: '[Response] Removed schema from RESPONSE media type',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_XML_JSON,
@@ -122,7 +122,7 @@ export const RemoveSchemaFromResponseMediaType: Story = {
   ),
 }
 
-export const RemoveResponseHeaders: Story = {
+export const case7: Story = {
   name: '[Response] Removed ALL response HEADERS',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_2_HEADERS,
@@ -130,7 +130,7 @@ export const RemoveResponseHeaders: Story = {
   ),
 }
 
-export const Remove1ResponseHeader: Story = {
+export const case8: Story = {
   name: '[Response] Removed 1 response HEADER',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_2_HEADERS,
@@ -138,7 +138,7 @@ export const Remove1ResponseHeader: Story = {
   ),
 }
 
-export const AddResponseHeaders: Story = {
+export const case9: Story = {
   name: '[Response] Added ALL response HEADERS',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON,
@@ -146,7 +146,7 @@ export const AddResponseHeaders: Story = {
   ),
 }
 
-export const Add1ResponseHeader: Story = {
+export const case10: Story = {
   name: '[Response] Added 1 response HEADER',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_RESPONSE_200_JSON_RESPONSE_301_1_HEADER,
@@ -154,7 +154,7 @@ export const Add1ResponseHeader: Story = {
   ),
 }
 
-export const RemoveWholeRequestBody: Story = {
+export const case11: Story = {
   name: '[Request] Removed whole REQUEST BODY',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
@@ -162,7 +162,7 @@ export const RemoveWholeRequestBody: Story = {
   ),
 }
 
-export const AddWholeRequestBody: Story = {
+export const case12: Story = {
   name: '[Request] Added whole REQUEST BODY',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.EMPTY_OPERATION,
@@ -170,7 +170,7 @@ export const AddWholeRequestBody: Story = {
   ),
 }
 
-export const RemoveWholeRequestBodyMediaType: Story = {
+export const case13: Story = {
   name: '[Request] Removed whole REQUEST BODY media type',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
@@ -178,7 +178,7 @@ export const RemoveWholeRequestBodyMediaType: Story = {
   ),
 }
 
-export const AddWholeRequestBodyMediaType: Story = {
+export const case14: Story = {
   name: '[Request] Added whole REQUEST BODY media type',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_XML,
@@ -186,7 +186,7 @@ export const AddWholeRequestBodyMediaType: Story = {
   ),
 }
 
-export const RemoveSchemaFromRequestBodyMediaType: Story = {
+export const case15: Story = {
   name: '[Request] Removed schema from REQUEST BODY media type',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_BODY_JSON_XML,
@@ -194,7 +194,7 @@ export const RemoveSchemaFromRequestBodyMediaType: Story = {
   ),
 }
 
-export const Removed1RequestHeader: Story = {
+export const case16: Story = {
   name: '[Request] Removed 1 request HEADER',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_3_HEADERS_RESPONSE_200_JSON_RESPONSE_HEADERS,
@@ -202,7 +202,7 @@ export const Removed1RequestHeader: Story = {
   ),
 }
 
-export const Added1RequestHeader: Story = {
+export const case17: Story = {
   name: '[Request] Added 1 request HEADER',
   ...createLegacyDiffOperationStory(
     WhollyChangedRequestBodyOrResponse.HAS_REQUEST_2_HEADERS_RESPONSE_200_JSON_RESPONSE_HEADERS,
@@ -210,7 +210,7 @@ export const Added1RequestHeader: Story = {
   ),
 }
 
-export const DeprecatedOperation: Story = {
+export const case18: Story = {
   name: '[Operation] NOT deprecated -> Deprecated',
   ...createLegacyDiffOperationStory(
     DeprecatedOperations.WITHOUT_DEPRECATION,
@@ -218,7 +218,7 @@ export const DeprecatedOperation: Story = {
   ),
 }
 
-export const UnDeprecatedOperation: Story = {
+export const case19: Story = {
   name: '[Operation] Deprecated -> NOT deprecated',
   ...createLegacyDiffOperationStory(
     DeprecatedOperations.WITH_DEPRECATION,
@@ -226,7 +226,7 @@ export const UnDeprecatedOperation: Story = {
   ),
 }
 
-export const ChangedParametersRequiredStory: Story = {
+export const case20: Story = {
   name: '[Operation] Changed "required" flags in parameters',
   ...createLegacyDiffOperationStory(
     ChangedParametersRequired.BEFORE,
@@ -234,7 +234,7 @@ export const ChangedParametersRequiredStory: Story = {
   ),
 }
 
-export const ChangedParametersDeprecatedStory: Story = {
+export const case21: Story = {
   name: '[Operation] Changed "deprecated" flags in parameters',
   ...createLegacyDiffOperationStory(
     ChangedParametersDeprecated.BEFORE,
@@ -242,56 +242,59 @@ export const ChangedParametersDeprecatedStory: Story = {
   ),
 }
 
-export const RequestBodyNoAdditionalPropertiesNotChanged: Story = createLegacyDiffOperationStory(
-  {
-    openapi: '3.0.2',
-    paths: {
-      '/test': {
-        post: {
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: {
-                  type: 'object',
-                  properties: {
-                    prop1: { type: 'string' },
-                    prop2: { type: 'string' },
-                  },
-                  additionalProperties: false
+export const case22: Story = {
+  name: 'Request Body No Additional Properties Not Changed',
+  ...createLegacyDiffOperationStory(
+    {
+      openapi: '3.0.2',
+      paths: {
+        '/test': {
+          post: {
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      prop1: { type: 'string' },
+                      prop2: { type: 'string' },
+                    },
+                    additionalProperties: false
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-  },
-  {
-    openapi: '3.0.2',
-    paths: {
-      '/test': {
-        post: {
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: {
-                  type: 'object',
-                  properties: {
-                    prop1: { type: 'string' },
-                    prop2: { type: 'string' },
-                  },
-                  additionalProperties: false
+    },
+    {
+      openapi: '3.0.2',
+      paths: {
+        '/test': {
+          post: {
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      prop1: { type: 'string' },
+                      prop2: { type: 'string' },
+                    },
+                    additionalProperties: false
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-  },
-)
+    },
+  ),
+}
 
-export const OneOfChanges: Story = {
+export const case23: Story = {
   name: '[oneOf] Changes in oneOf',
   ...createLegacyDiffOperationStory(
     {
@@ -493,77 +496,83 @@ const KEEP_PROPS_STRING_TYPE = {
   pattern: '^a-zA-Z$'
 }
 
-export const IntegerToString: Story = createLegacyDiffOperationStory(
-  {
-    openapi: '3.0.0',
-    paths: {
-      '/test': {
-        post: {
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: KEEP_PROPS_INTEGER_TYPE
+export const case24: Story = {
+  name: 'Integer To String',
+  ...createLegacyDiffOperationStory(
+    {
+      openapi: '3.0.0',
+      paths: {
+        '/test': {
+          post: {
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: KEEP_PROPS_INTEGER_TYPE
+                }
               }
             }
           }
         }
       }
-    }
-  },
-  {
-    openapi: '3.0.0',
-    paths: {
-      '/test': {
-        post: {
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: KEEP_PROPS_STRING_TYPE
+    },
+    {
+      openapi: '3.0.0',
+      paths: {
+        '/test': {
+          post: {
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: KEEP_PROPS_STRING_TYPE
+                }
               }
             }
           }
         }
       }
-    }
-  },
-)
+    },
+  ),
+}
 
-export const StringToInteger: Story = createLegacyDiffOperationStory(
-  {
-    openapi: '3.0.0',
-    paths: {
-      '/test': {
-        post: {
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: KEEP_PROPS_STRING_TYPE
+export const case25: Story = {
+  name: 'String To Integer',
+  ...createLegacyDiffOperationStory(
+    {
+      openapi: '3.0.0',
+      paths: {
+        '/test': {
+          post: {
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: KEEP_PROPS_STRING_TYPE
+                }
               }
             }
           }
         }
       }
-    }
-  },
-  {
-    openapi: '3.0.0',
-    paths: {
-      '/test': {
-        post: {
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: KEEP_PROPS_INTEGER_TYPE
+    },
+    {
+      openapi: '3.0.0',
+      paths: {
+        '/test': {
+          post: {
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: KEEP_PROPS_INTEGER_TYPE
+                }
               }
             }
           }
         }
       }
-    }
-  },
-)
+    },
+  ),
+}
 
-export const ChangePathParamName: Story = {
+export const case26: Story = {
   name: '[path] Changed path param name',
   ...createLegacyDiffOperationStory(
     {
@@ -613,7 +622,7 @@ export const ChangePathParamName: Story = {
 
 const EMPTY_FILTERS = { filters: [] }
 
-export const RenameMediaTypeAndADeeperChangeInResponse: Story = {
+export const case27: Story = {
   name: '[Response] Rename media type and a deeper change in response',
   ...createLegacyDiffOperationStory(
     renameMediaTypeAndADeeperChangeInResponseBefore,
@@ -623,7 +632,7 @@ export const RenameMediaTypeAndADeeperChangeInResponse: Story = {
 }
 
 // todo should be shown
-export const RenameMediaTypeInResponse: Story = {
+export const case28: Story = {
   name: '[Response] Rename media type in response',
   ...createLegacyDiffOperationStory(
     renameMediaTypeInResponseBefore,
@@ -632,7 +641,7 @@ export const RenameMediaTypeInResponse: Story = {
   ),
 }
 
-export const RenameMediaTypeAndADeeperChangeInRequestBody: Story = {
+export const case29: Story = {
   name: '[Request] Rename media type and a deeper change in request body',
   ...createLegacyDiffOperationStory(
     renameMediaTypeAndADeeperChangeInRequestBodyBefore,
@@ -642,7 +651,7 @@ export const RenameMediaTypeAndADeeperChangeInRequestBody: Story = {
 }
 
 // todo should be shown
-export const RenameMediaTypeInRequestBody: Story = {
+export const case30: Story = {
   name: '[Request] Rename media type in request body',
   ...createLegacyDiffOperationStory(
     renameMediaTypeInRequestBodyBefore,
@@ -700,7 +709,7 @@ const afterBugCrashInfiniteAdditionalPropsInDiffs = {
 }
 
 // Root cause: incorrect behavior of "isDiffMetaRecord" which produces infinite loop in "combineDiffMetas"
-export const BugCrashInfiniteAdditionalPropsInDiffs: Story = {
+export const case31: Story = {
   name: '[Bug] Crash Infinite Additional Props In Diffs',
   ...createLegacyDiffOperationStory(
     beforeBugCrashInfiniteAdditionalPropsInDiffs,
