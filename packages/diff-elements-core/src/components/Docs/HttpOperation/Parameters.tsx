@@ -164,9 +164,11 @@ const httpOperationParamsToSchema = (
 
     mergeMirrorSymbolsForDiffMeta(p, diffMetaKey)
 
-    // Parameter's own `required` flag diff is moved to the synthetic schema's `required` array
-    // (see `toRequiredArrayItemDiff`), it isn't a diff of the property schema itself
-    const { required: parameterRequiredDiff, ...parameterDiffMeta } = p[diffMetaKey] ?? {}
+    // Parameter-level diffs which aren't diffs of the property schema itself:
+    // - `required` is moved to the synthetic schema's `required` array (see `toRequiredArrayItemDiff`),
+    // - `name` becomes a rename of the property key (see `nameDiff` below).
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { required: parameterRequiredDiff, name: _parameterNameDiff, ...parameterDiffMeta } = p[diffMetaKey] ?? {}
     const paramPropsDiffMeta = {
       ...parameterDiffMeta,
       ...paramSchema?.[diffMetaKey] ?? {},
