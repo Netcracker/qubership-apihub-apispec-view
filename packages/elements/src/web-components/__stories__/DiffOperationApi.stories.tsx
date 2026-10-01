@@ -483,14 +483,14 @@ export const case23: Story = {
 
 const KEEP_PROPS_INTEGER_TYPE = {
   type: 'integer',
-  description: 'Integer type',
+  description: 'Value',
   minimum: 5,
   exclusiveMinimum: true,
   multipleOf: 5,
 }
 const KEEP_PROPS_STRING_TYPE = {
   type: 'string',
-  description: 'String type',
+  description: 'Value',
   minLength: 1,
   maxLength: 150,
   pattern: '^a-zA-Z$'
@@ -580,7 +580,7 @@ export const case26: Story = {
       paths: {
         '/test/{id}': {
           get: {
-            summary: 'Get test by id',
+            summary: 'Get test',
             parameters: [
               {
                 name: 'id',
@@ -588,7 +588,7 @@ export const case26: Story = {
                 required: true,
                 schema: {
                   type: 'string',
-                  description: 'Id of the test',
+                  description: 'Identifier of the test',
                 }
               }
             ]
@@ -601,7 +601,7 @@ export const case26: Story = {
       paths: {
         '/test/{key}': {
           get: {
-            summary: 'Get test by key',
+            summary: 'Get test',
             parameters: [
               {
                 name: 'key',
@@ -609,7 +609,7 @@ export const case26: Story = {
                 required: true,
                 schema: {
                   type: 'string',
-                  description: 'Key of the test',
+                  description: 'Identifier of the test',
                 }
               }
             ]
