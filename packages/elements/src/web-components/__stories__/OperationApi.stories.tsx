@@ -1,8 +1,13 @@
 import '../index';
 
 import { apiAuthLocalAfter, apiAuthLocalBefore, simpleOperation, specWithComplexRefs } from '@netcracker/qubership-apihub-apispec-view-samples';
-import { OperationAPIImpl } from "@stoplight/elements/containers/OperationAPI";
-import { getMergedDocument } from "@stoplight/elements/web-components/__stories__/helpers/getMergedDocument";
+import {
+  createLegacyOperationStory,
+  legacyStoryArgTypes,
+  LegacyStoryArgs,
+  legacyStoryParameters,
+} from '@stoplight/elements/web-components/__stories__/helpers/legacy-stories-utils';
+import { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
 
 declare global {
@@ -13,75 +18,54 @@ declare global {
   }
 }
 
-const Template = (props: any) => <OperationAPIImpl {...props} proxyServer={JSON.stringify(props.proxyServer)} />;
+const meta: Meta<LegacyStoryArgs> = {
+  title: 'Legacy tests/OperationAPI',
+  id: 'legacy-tests-operation-api',
+  argTypes: legacyStoryArgTypes,
+  parameters: legacyStoryParameters,
+};
 
-export default {
-  title: 'web-components/OperationAPI',
-  argTypes: {
-    operation: {
-      control: 'text',
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const SimpleOperation: Story = {
+  name: 'Simple Operation',
+  ...createLegacyOperationStory(simpleOperation),
+};
+
+export const SimpleOperationSimpleMode: Story = {
+  name: 'Simple Operation (Simple Mode)',
+  ...createLegacyOperationStory(simpleOperation, { componentProps: { schemaViewMode: 'simple' } }),
+};
+
+export const ApiAuthLocalBefore: Story = {
+  name: 'Api Auth Local Before',
+  ...createLegacyOperationStory(apiAuthLocalBefore, {
+    componentProps: {
+      proxyServer: JSON.stringify({ url: 'test-proxy-url', description: 'Custom url' }),
+      hideExamples: true,
     },
-    layout: {
-      control: { type: 'inline-radio', options: ['sidebar', 'stacked', 'partial'] },
-      defaultValue: 'sidebar',
-    },
-    router: {
-      control: { type: 'inline-radio', options: ['history', 'memory', 'hash', 'static'] },
-      defaultValue: 'history',
-    },
-    selectedNodeUri: { control: 'text', defaultValue: '/' },
-    searchPhrase: { control: 'text' },
-    schemaViewMode: {
-      control: { type: 'inline-radio', options: ['simple', 'detailed'] },
-      defaultValue: undefined,
-    },
-  },
+  }),
 };
 
-export const SimpleOperation: any = Template.bind({});
-SimpleOperation.args = {
-  mergedDocument: getMergedDocument(simpleOperation, undefined),
+export const ApiAuthLocalAfter: Story = {
+  name: 'Api Auth Local After',
+  ...createLegacyOperationStory(apiAuthLocalAfter),
 };
-SimpleOperation.storyName = 'Simple Operation';
 
-export const SimpleOperationSimpleMode: any = Template.bind({});
-SimpleOperationSimpleMode.args = {
-  mergedDocument: getMergedDocument(simpleOperation, undefined),
-  schemaViewMode: 'simple',
+export const OperationWithoutHeading: Story = {
+  name: 'Operation without Heading',
+  ...createLegacyOperationStory(simpleOperation, { componentProps: { noHeading: true } }),
 };
-SimpleOperationSimpleMode.storyName = 'Simple Operation (Simple Mode)';
 
-export const ApiAuthLocalBefore: any = Template.bind({});
-ApiAuthLocalBefore.args = {
-  mergedDocument: getMergedDocument(apiAuthLocalBefore, undefined),
-  proxyServer: { url: 'test-proxy-url', description: 'Custom url' },
-  hideExamples: true,
+export const SpecWithComplexRefs: Story = {
+  name: 'Spec with Complex Refs',
+  ...createLegacyOperationStory(specWithComplexRefs, { componentProps: { noHeading: true } }),
 };
-ApiAuthLocalBefore.storyName = 'Api Auth Local Before';
 
-export const ApiAuthLocalAfter: any = Template.bind({});
-ApiAuthLocalAfter.args = {
-  mergedDocument: getMergedDocument(apiAuthLocalAfter, undefined),
-};
-ApiAuthLocalAfter.storyName = 'Api Auth Local After';
-
-export const OperationWithoutHeading: any = Template.bind({});
-OperationWithoutHeading.args = {
-  mergedDocument: getMergedDocument(simpleOperation, undefined),
-  noHeading: true,
-};
-OperationWithoutHeading.storyName = 'Operation without Heading';
-
-export const SpecWithComplexRefs: any = Template.bind({});
-SpecWithComplexRefs.args = {
-  mergedDocument: getMergedDocument(specWithComplexRefs, undefined),
-  noHeading: true,
-};
-SpecWithComplexRefs.storyName = 'Spec with Complex Refs';
-
-export const OperationWithParametersOneSchemaAnotherContent: any = Template.bind({});
-OperationWithParametersOneSchemaAnotherContent.args = {
-  mergedDocument: getMergedDocument({
+export const OperationWithParametersOneSchemaAnotherContent: Story = {
+  name: 'Operation with 2 params. 1st with schema, 2nd with content',
+  ...createLegacyOperationStory({
     openapi: '3.0.2',
     paths: {
       '/test': {
@@ -113,36 +97,29 @@ OperationWithParametersOneSchemaAnotherContent.args = {
         },
       },
     },
-  }, undefined),
+  }),
 };
-OperationWithParametersOneSchemaAnotherContent.storyName = 'Operation with 2 params. 1st with schema, 2nd with content';
 
-export const RequestBodyNoAdditionalProperties: any = Template.bind({});
-RequestBodyNoAdditionalProperties.args = {
-  mergedDocument: getMergedDocument(
-    {
-      openapi: '3.0.2',
-      paths: {
-        '/test': {
-          post: {
-            requestBody: {
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      prop1: { type: 'string' },
-                      prop2: { type: 'string' },
-                    },
-                    additionalProperties: false
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+export const RequestBodyNoAdditionalProperties: Story = createLegacyOperationStory({
+  openapi: '3.0.2',
+  paths: {
+    '/test': {
+      post: {
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  prop1: { type: 'string' },
+                  prop2: { type: 'string' },
+                },
+                additionalProperties: false,
+              },
+            },
+          },
+        },
+      },
     },
-    undefined
-  )
-}
+  },
+});
