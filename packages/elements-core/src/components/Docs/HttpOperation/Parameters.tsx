@@ -44,8 +44,7 @@ const defaultStyle = {
 
 export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameters, parameterType }) => {
   // FIXME 18.06.24 // Get rid of "parametersMediaTypes" when future wonderful AMT+ADV are ready!
-  // TODO: Pass parameters media types (2nd tuple item) to JsonSchemaViewer once it supports them again
-  const [schema] = useMemo(
+  const [schema, parametersMediaTypes] = useMemo(
     () => httpOperationParamsToSchema({ parameters, parameterType }),
     [parameters, parameterType],
   );
@@ -66,6 +65,7 @@ export const Parameters: React.FunctionComponent<ParametersProps> = ({ parameter
       displayMode={schemaViewMode}
       expandedDepth={defaultSchemaDepth}
       customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
+      topLevelPropsMediaTypes={parametersMediaTypes}
     />
   );
 };
