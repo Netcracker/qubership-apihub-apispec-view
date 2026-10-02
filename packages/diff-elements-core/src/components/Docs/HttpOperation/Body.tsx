@@ -1,4 +1,4 @@
-import { buildOpenApiDiffCause, JsonSchemaDiffViewer, JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer'
+import { buildOpenApiDiffCause, JsonSchemaDiffsViewer, JsonSchemaViewer } from '@netcracker/qubership-apihub-api-doc-viewer'
 import { useOperationSchemaOptionsMode } from '@stoplight/elements'
 import { Flex, VStack } from '@stoplight/mosaic'
 import { IHttpOperationRequestBody } from '@stoplight/types'
@@ -11,6 +11,7 @@ import { Description } from '@stoplight/diff-elements-core/components/Docs/HttpO
 import { useAggregatedDiffsMetaKey } from '@stoplight/elements/containers/AggregatedDiffsMetaKeyContext'
 import { useChangeSeverityFilters } from '@stoplight/elements/containers/ChangeSeverityFiltersContext'
 import { useDiffsMetaKey } from '@stoplight/elements/containers/DiffsMetaKeyContext'
+import { JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS } from '../../../constants'
 import { SectionSubtitle } from '../Sections'
 import { DIFF_ACTION_ATTRIBUTE, resolveMediaTypeDiffAction } from './diffActionMarkers'
 
@@ -100,23 +101,36 @@ export const Body = ({ body, onChange }: DiffBodyProps) => {
               schema={schema}
               displayMode={schemaViewMode}
               expandedDepth={defaultSchemaDepth}
-              overriddenKind="parameters"
+              customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
             />
           </DiffBlock>
         </DiffContainer>
       )
     }
 
+    // Whole operation was added/removed, so there is nothing to compare side-by-side
+    if (notSplitSchemaViewer) {
+      return (
+        <JsonSchemaViewer
+          schema={schema}
+          displayMode={schemaViewMode}
+          expandedDepth={defaultSchemaDepth}
+          customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
+        />
+      )
+    }
+
     return (
-      <JsonSchemaDiffViewer
+      <JsonSchemaDiffsViewer
         schema={schema}
         displayMode={schemaViewMode}
         expandedDepth={defaultSchemaDepth}
-        overriddenKind="parameters"
+        customizationOptions={JSON_SCHEMA_VIEWER_CUSTOMIZATION_OPTIONS}
         // diffs specific
-        layoutMode={notSplitSchemaViewer ? 'document' : 'side-by-side-diffs'}
-        filters={filters}
-        metaKeys={diffMetaKeys}
+        diffTypes={filters}
+        diffMetaKeys={diffMetaKeys}
+        // TODO: Temporarily disabled, restore once hiding unchanged nodes is supported
+        hideUnchangedNodes={false}
       />
     )
   }, [defaultSchemaDepth, diffsMetaKey, filters, notSplitSchemaViewer, schema, schemaViewMode, wholeContentDiff, aggregatedDiffsMetaKey])
