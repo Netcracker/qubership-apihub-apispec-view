@@ -16,7 +16,6 @@
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@netcracker/qubership-apihub-api-diff": "bugfix-update-infrastructure",
     "@stoplight/json": "^3.18.1",
     "@stoplight/json-schema-tree": "^2.2.1",
     "@stoplight/markdown-viewer": "^5.4.7",
