@@ -1,5 +1,5 @@
 import { IMediaTypeContent } from '@stoplight/types'
-import { extractAmountOfDiffs, isDiff } from 'diff-block'
+import { extractAmountOfDiffs, isDiff } from '@netcracker/qubership-apihub-apispec-view-diff-block'
 import { keys } from 'lodash'
 
 /**

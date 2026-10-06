@@ -6,7 +6,7 @@ import {
   legacyStoryArgTypes,
   LegacyStoryArgs,
   legacyStoryParameters,
-} from '@stoplight/elements/web-components/__stories__/helpers/legacy-stories-utils';
+} from '@netcracker/qubership-apihub-apispec-view/web-components/__stories__/helpers/legacy-stories-utils';
 import { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
 
@@ -26,7 +26,7 @@ const meta: Meta<LegacyStoryArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<LegacyStoryArgs>;
 
 export const case1: Story = {
   name: '[GET /pets/{id}/**] Operation with path param, security and request body',

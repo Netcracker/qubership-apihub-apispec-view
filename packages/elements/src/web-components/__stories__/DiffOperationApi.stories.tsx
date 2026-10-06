@@ -24,13 +24,13 @@ import {
 // import renameMediaTypeAndADeeperChangeInResponseHeaderBefore from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/before.yaml'
 // import renameMediaTypeAndADeeperChangeInResponseHeaderAfter from '@netcracker/qubership-apihub-apispec-view-samples/media-type-samples/rename-media-type-and-a-deeper-change-in-response-header/after.yaml'
 
-import { COMPARE_DISPLAY_MODE } from '@stoplight/elements'
+import { COMPARE_DISPLAY_MODE } from '../../index'
 import {
   createLegacyDiffOperationStory,
   legacyDiffStoryArgTypes,
   LegacyDiffStoryArgs,
   legacyDiffStoryParameters,
-} from '@stoplight/elements/web-components/__stories__/helpers/legacy-stories-utils'
+} from './helpers/legacy-stories-utils'
 import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import '../index'
@@ -51,7 +51,7 @@ const meta: Meta<LegacyDiffStoryArgs> = {
 }
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<LegacyDiffStoryArgs>
 
 export const case1: Story = {
   name: '[POST /pet] Multiple changes in operation, request body, responses and schema',
